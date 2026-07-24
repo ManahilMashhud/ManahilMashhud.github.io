@@ -6,6 +6,9 @@ pipeline {
         PROJECT_NAME    = 'my-portfolio'
         IMAGE_NAME      = 'my-portfolio'
         CREDENTIALS_ID  = 'harbor-creds'
+        
+        TAG_VERSION     = "${BUILD_NUMBER}"
+        TAG_LATEST      = "latest"
     }
 
     stages {
@@ -18,11 +21,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Yahan hum do tags bana rahe hain: ek 'latest' aur ek build number wala (jaise :3, :4, etc.)
                     app = docker.build("${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:${BUILD_NUMBER}")
-                    app.inside {
-                        // Image ko 'latest' tag bhi assign kar rahe hain
-                    }
                 }
             }
         }
@@ -31,13 +30,36 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry("http://${HARBOR_REGISTRY}", "${CREDENTIALS_ID}") {
-                        // 1. Build number wali image push hogi (yeh aapka versioned/n-1 backup ban jayegi)
+                        // 1. Build number wali image push hogi
                         app.push("${BUILD_NUMBER}")
                         
-                        // 2. Latest tag wali image bhi push hogi
+                        // 2. Latest tag wali image push hogi
                         app.push("latest")
                     }
                 }
+            }
+        }
+
+        stage('Deploy to Server') {
+            steps {
+                sh '''
+                    echo "Deploying latest image to server on port 8081..."
+                    
+                    // 1. Purana container roko aur hatao
+                    sudo docker stop portfolio-container || true
+                    sudo docker rm portfolio-container || true
+                    
+                    // 2. Purani local latest image hatao taake cache ka masla na ho
+                    sudo docker rmi 192.168.5.234/my-portfolio/my-portfolio:latest || true
+                    
+                    // 3. Harbor se bilkul nayi latest image pull karo
+                    sudo docker pull ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:latest
+                    
+                    // 4. Port 8081 par naya container live karo
+                    sudo docker run -d --name portfolio-container -p 8081:80 --restart always ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:latest
+                    
+                    echo "Deployment completed successfully!"
+                '''
             }
         }
     }
