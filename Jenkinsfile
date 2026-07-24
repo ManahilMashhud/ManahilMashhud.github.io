@@ -45,18 +45,24 @@ pipeline {
                 sh '''
                     echo "Deploying latest image to server on port 8081..."
                     
-                    # 1. Purana container roko aur hatao
-                     docker stop portfolio-container || true
-                     docker rm portfolio-container || true
+                   # 1. Purana container roko aur hatao
+                    docker stop portfolio-container || true
+                    docker rm portfolio-container || true
                     
-                    # 2. Purani local latest image hatao taake cache ka masla na ho
-                     docker rmi 192.168.5.234/my-portfolio/my-portfolio:latest || true
+                    # 2. Agar port 8081 par koi aur stray container chalu ho toh usko free karo
+                    docker ps -q --filter "publish=8081" | xargs -r docker stop || true
+                    docker ps -a -q --filter "publish=8081" | xargs -r docker rm || true
                     
-                    # 3. Harbor se bilkul nayi latest image pull karo
-                     docker pull ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:latest
+                    # 3. Purani local latest image hatao taake cache ka masla na ho
+                    docker rmi 192.168.5.234/my-portfolio/my-portfolio:latest || true
                     
-                    # 4. Port 8081 par naya container live karo
-                     docker run -d --name portfolio-container -p 8081:80 --restart always ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:latest
+                    # 4. Harbor se bilkul nayi latest image pull karo
+                    docker pull ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:latest
+                    
+                    # 5. Port 8081 par naya container live karo
+                    docker run -d --name portfolio-container -p 8081:80 --restart always ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:latest
+
+                    
                     
                     echo "Deployment completed successfully!"
                 '''
