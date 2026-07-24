@@ -2,14 +2,15 @@ pipeline {
     agent any
     
     environment {
-        HARBOR_REGISTRY = '192.168.5.232:8085'
+        // Aapke bataye hue IPs ke mutabiq Harbor registry ka address
+        HARBOR_REGISTRY = '192.168.5.234:8085'
         PROJECT_NAME    = 'my-portfolio'
         IMAGE_NAME      = 'my-portfolio'
-        CREDENTIALS_ID  = 'harbor-login' // Yeh aapke Jenkins ke credentials ki ID hai
+        CREDENTIALS_ID  = 'harbor-login' // Jenkins mein save kiye gaye Harbor credentials ki ID
     }
 
     stages {
-        // Step 1: GitLab se code apne paas download karna
+        // Step 1: GitLab (192.168.5.232) se code checkout/download karna
         stage('Checkout Code') {
             steps {
                 checkout scm
@@ -20,17 +21,15 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Yahan image ka tag build number ke sath banega (misal: my-portfolio:1)
                     app = docker.build("${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:${BUILD_NUMBER}")
                 }
             }
         }
 
-        // Step 3: Bani hui image ko Harbor registry par push karna
+        // Step 3: Bani hui image ko Harbor (192.168.5.234) par push karna
         stage('Push to Harbor') {
             steps {
                 script {
-                    // Jenkins mein save kiye gaye credentials use karke login aur push karega
                     docker.withRegistry("http://${HARBOR_REGISTRY}", "${CREDENTIALS_ID}") {
                         app.push()
                     }
