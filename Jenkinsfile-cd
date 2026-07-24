@@ -26,14 +26,14 @@ pipeline {
                     echo "Deploying to server on port 8081 using explicit latest tag..."
                     
                     // Purana container hata dein agar pehle se chal raha ho
-                    docker stop portfolio-container || true
-                    docker rm portfolio-container || true
+                    sudo docker stop portfolio-container || true
+                    sudo docker rm portfolio-container || true
                     
-                    // Harbor se login karke image pull karein (agar public hai toh direct pull ho jayegi)
-                    docker pull ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:${TAG_LATEST}
+                    // Harbor se image pull karein
+                    sudo docker pull ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:${TAG_LATEST}
                     
                     // Naya container port 8081 par run karein
-                    docker run -d --name portfolio-container -p 8081:80 --restart always ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:${TAG_LATEST}
+                    sudo docker run -d --name portfolio-container -p 8081:80 --restart always ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:${TAG_LATEST}
                 '''
             }
         }
