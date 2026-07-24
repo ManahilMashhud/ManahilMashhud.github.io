@@ -46,17 +46,17 @@ pipeline {
                     echo "Deploying latest image to server on port 8081..."
                     
                     # 1. Purana container roko aur hatao
-                    sudo docker stop portfolio-container || true
-                    sudo docker rm portfolio-container || true
+                     docker stop portfolio-container || true
+                     docker rm portfolio-container || true
                     
                     # 2. Purani local latest image hatao taake cache ka masla na ho
-                    sudo docker rmi 192.168.5.234/my-portfolio/my-portfolio:latest || true
+                     docker rmi 192.168.5.234/my-portfolio/my-portfolio:latest || true
                     
                     # 3. Harbor se bilkul nayi latest image pull karo
-                    sudo docker pull ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:latest
+                     docker pull ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:latest
                     
                     # 4. Port 8081 par naya container live karo
-                    sudo docker run -d --name portfolio-container -p 8081:80 --restart always ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:latest
+                     docker run -d --name portfolio-container -p 8081:80 --restart always ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:latest
                     
                     echo "Deployment completed successfully!"
                 '''
