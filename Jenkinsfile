@@ -57,10 +57,10 @@ pipeline {
                     docker rmi 192.168.5.234/my-portfolio/my-portfolio:latest || true
                     
                     # 4. Harbor se bilkul nayi latest image pull karo
-                    docker pull ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:latest
+                    docker pull ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:15
                     
                     # 5. Port 8081 par naya container live karo
-                    docker run -d --name portfolio-container -p 8081:80 --restart always ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:latest
+                    docker run -d --name portfolio-container -p 8081:80 --restart always ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:15
 
                     
                     
