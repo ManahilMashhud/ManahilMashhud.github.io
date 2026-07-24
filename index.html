@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manahil Mashhud | Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-color: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.2);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; padding: 20px; }
+        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
+        header { text-align: center; padding: 50px 20px; background: var(--card-bg); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-bottom: 30px; border: 1px solid #334155; }
+        header h1 { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 10px; }
+        header p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px; }
+        .contact-links a { color: var(--accent-color); text-decoration: none; margin: 0 10px; font-weight: 600; }
+        .contact-links a:hover { text-decoration: underline; }
+        section { background: var(--card-bg); padding: 30px; border-radius: 16px; margin-bottom: 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); border: 1px solid #334155; }
+        section h2 { color: var(--accent-color); margin-bottom: 20px; font-size: 1.5rem; border-bottom: 2px solid #334155; padding-bottom: 8px; }
+        .item { margin-bottom: 20px; }
+        .item h3 { font-size: 1.2rem; color: var(--text-color); }
+        .item span { font-size: 0.9rem; color: var(--text-muted); display: block; margin-bottom: 8px; }
+        ul { padding-left: 20px; color: var(--text-muted); }
+        ul li { margin-bottom: 6px; }
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill-tag { background: #0f172a; color: var(--accent-color); padding: 8px 14px; border-radius: 8px; font-size: 0.9rem; border: 1px solid var(--accent-color); }
+        footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Manahil Mashhud</h1>
+            <p>CS Undergrad @ KIET | DevOps Intern @ Pakistan Single Window | Flutter Developer</p>
+            <div class="contact-links">
+                <a href="mailto:manahilmashhud7@gmail.com">Email</a> | 
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a> | 
+                <a href="https://github.com" target="_blank">GitHub</a>
+            </div>
+        </header>
+
+        <!-- About Me -->
+        <section>
+            <h2>About Me</h2>
+            <p>Computer Science undergraduate with hands-on development experience and a foundation in cloud computing, networking, and systems concepts. Passionate about building scalable software solutions, DevOps automation, and modern mobile app development.</p>
+        </section>
+
+        <!-- Experience -->
+        <section>
+            <h2>Professional Experience</h2>
+            <div class="item">
+                <h3>DevOps Intern — Pakistan Single Window (PSW)</h3>
+                <span>Jul 2026 – Present | Karachi, Pakistan</span>
+                <p>Learning modern deployment practices, automation, Linux, version control, CI/CD, and cloud technologies.</p>
+            </div>
+            <div class="item">
+                <h3>Flutter Developer Intern — Appverse Technologies</h3>
+                <span>Feb 2026 – Apr 2026 | Remote</span>
+                <ul>
+                    <li>Built Flutter mobile apps with real-time Firebase integration (Auth, Firestore, Storage).</li>
+                    <li>Implemented responsive UI layouts, animations, and managed state using Provider.</li>
+                    <li>Consumed REST APIs and deployed production-ready applications.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section>
+            <h2>Key Projects</h2>
+            <div class="item">
+                <h3>YapYap – Real-Time Chat App</h3>
+                <span>Java, Android Studio, Firebase</span>
+                <p>Real-time messaging platform equipped with secure Firebase authentication and persistent message storage.</p>
+            </div>
+            <div class="item">
+                <h3>MindStack & To-Do List Apps</h3>
+                <span>Java, Android Studio</span>
+                <p>Full CRUD note-taking application with dynamic RecyclerView and persistent task management storage.</p>
+            </div>
+            <div class="item">
+                <h3>Snake Game</h3>
+                <span>C#</span>
+                <p>Core game logic designed with console graphics and responsive real-time input handling.</p>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-tag">DevOps & Cloud</div>
+                <div class="skill-tag">Flutter & Dart</div>
+                <div class="skill-tag">Java & Kotlin</div>
+                <div class="skill-tag">C#</div>
+                <div class="skill-tag">Firebase & REST APIs</div>
+                <div class="skill-tag">Git & GitHub</div>
+                <div class="skill-tag">Linux & Networking</div>
+                <div class="skill-tag">MySQL</div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Manahil Mashhud. Built with Automated CI/CD Pipeline.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
