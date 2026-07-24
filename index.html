@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hii Manahil Mashhud | Portfolio</title>
+    <title>Manahil Mashhud | Portfolio</title>
+    <!-- FontAwesome icons for modern look -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-color: #0f172a;
@@ -11,59 +13,163 @@
             --text-color: #f8fafc;
             --text-muted: #94a3b8;
             --accent-color: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.2);
+            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            --border-color: #334155;
+            --hover-bg: #2563eb;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+        .light-mode {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #0f172a;
+            --text-muted: #64748b;
+            --accent-color: #0284c7;
+            --accent-gradient: linear-gradient(135deg, #0284c7 0%, #4f46e5 100%);
+            --border-color: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background 0.3s, color 0.3s; }
         body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; padding: 20px; }
-        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
-        header { text-align: center; padding: 50px 20px; background: var(--card-bg); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-bottom: 30px; border: 1px solid #334155; }
-        header h1 { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 10px; }
-        header p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px; }
-        .contact-links a { color: var(--accent-color); text-decoration: none; margin: 0 10px; font-weight: 600; }
-        .contact-links a:hover { text-decoration: underline; }
-        section { background: var(--card-bg); padding: 30px; border-radius: 16px; margin-bottom: 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); border: 1px solid #334155; }
-        section h2 { color: var(--accent-color); margin-bottom: 20px; font-size: 1.5rem; border-bottom: 2px solid #334155; padding-bottom: 8px; }
-        .item { margin-bottom: 20px; }
-        .item h3 { font-size: 1.2rem; color: var(--text-color); }
-        .item span { font-size: 0.9rem; color: var(--text-muted); display: block; margin-bottom: 8px; }
+        
+        .container { max-width: 900px; margin: 30px auto; padding: 20px; }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            color: var(--accent-color);
+            border: 1px solid var(--border-color);
+            padding: 10px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-size: 1rem;
+            z-index: 1000;
+        }
+        .theme-toggle:hover { transform: scale(1.05); }
+
+        /* Header */
+        header { 
+            text-align: center; 
+            padding: 50px 20px; 
+            background: var(--card-bg); 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+            margin-bottom: 30px; 
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        header h1 { font-size: 2.8rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        header p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px; font-weight: 500; }
+        
+        .contact-links a { 
+            color: var(--text-color); 
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            text-decoration: none; 
+            padding: 8px 16px;
+            margin: 0 5px; 
+            border-radius: 8px;
+            font-weight: 600; 
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+        .contact-links a:hover { 
+            background: var(--accent-color);
+            color: #fff;
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section { 
+            background: var(--card-bg); 
+            padding: 30px; 
+            border-radius: 20px; 
+            margin-bottom: 25px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+            border: 1px solid var(--border-color);
+        }
+        section h2 { color: var(--accent-color); margin-bottom: 20px; font-size: 1.6rem; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        
+        .item { margin-bottom: 25px; padding-left: 10px; border-left: 3px solid var(--accent-color); }
+        .item:last-child { margin-bottom: 0; }
+        .item h3 { font-size: 1.25rem; color: var(--text-color); }
+        .item span { font-size: 0.9rem; color: var(--text-muted); display: block; margin: 4px 0 8px 0; font-weight: 500; }
+        
         ul { padding-left: 20px; color: var(--text-muted); }
         ul li { margin-bottom: 6px; }
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-        .skill-tag { background: #0f172a; color: var(--accent-color); padding: 8px 14px; border-radius: 8px; font-size: 0.9rem; border: 1px solid var(--accent-color); }
+
+        /* Skills Grid */
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+        .skill-tag { 
+            background: var(--bg-color); 
+            color: var(--accent-color); 
+            padding: 10px 16px; 
+            border-radius: 10px; 
+            font-size: 0.95rem; 
+            border: 1px solid var(--border-color);
+            font-weight: 600;
+            cursor: default;
+        }
+        .skill-tag:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+        }
+
+        /* Footer */
         footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.9rem; }
+
+        /* Interactive Animation class */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <!-- Dark/Light Theme Button -->
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">
+        <i class="fa-solid fa-moon" id="themeIcon"></i> Mode
+    </button>
+
+    <div class="container fade-in">
         <!-- Header -->
         <header>
             <h1>Manahil Mashhud here!</h1>
             <p>CS Undergrad @ KIET | DevOps Intern @ Pakistan Single Window | Flutter Developer</p>
             <div class="contact-links">
-                <a href="mailto:manahilmashhud7@gmail.com">Email</a> | 
-                <a href="https://linkedin.com" target="_blank">LinkedIn</a> | 
-                <a href="https://github.com" target="_blank">GitHub</a>
+                <a href="mailto:manahilmashhud7@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a> 
+                <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a> 
+                <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
             </div>
         </header>
 
         <!-- About Me -->
         <section>
-            <h2>About Me</h2>
+            <h2><i class="fa-solid fa-user"></i> About Me</h2>
             <p>Computer Science undergraduate with hands-on development experience and a foundation in cloud computing, networking, and systems concepts. Passionate about building scalable software solutions, DevOps automation, and modern mobile app development.</p>
         </section>
 
         <!-- Experience -->
         <section>
-            <h2>Professional Experience</h2>
+            <h2><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
             <div class="item">
                 <h3>DevOps Intern — Pakistan Single Window (PSW)</h3>
-                <span>Jul 2026 – Present | Karachi, Pakistan</span>
+                <span><i class="fa-regular fa-calendar"></i> Jul 2026 – Present | Karachi, Pakistan</span>
                 <p>Learning modern deployment practices, automation, Linux, version control, CI/CD, and cloud technologies.</p>
             </div>
             <div class="item">
                 <h3>Flutter Developer Intern — Appverse Technologies</h3>
-                <span>Feb 2026 – Apr 2026 | Remote</span>
+                <span><i class="fa-regular fa-calendar"></i> Feb 2026 – Apr 2026 | Remote</span>
                 <ul>
                     <li>Built Flutter mobile apps with real-time Firebase integration (Auth, Firestore, Storage).</li>
                     <li>Implemented responsive UI layouts, animations, and managed state using Provider.</li>
@@ -74,27 +180,27 @@
 
         <!-- Projects -->
         <section>
-            <h2>Key Projects</h2>
+            <h2><i class="fa-solid fa-code"></i> Key Projects</h2>
             <div class="item">
                 <h3>YapYap – Real-Time Chat App</h3>
-                <span>Java, Android Studio, Firebase</span>
+                <span><i class="fa-solid fa-tags"></i> Java, Android Studio, Firebase</span>
                 <p>Real-time messaging platform equipped with secure Firebase authentication and persistent message storage.</p>
             </div>
             <div class="item">
                 <h3>MindStack & To-Do List Apps</h3>
-                <span>Java, Android Studio</span>
+                <span><i class="fa-solid fa-tags"></i> Java, Android Studio</span>
                 <p>Full CRUD note-taking application with dynamic RecyclerView and persistent task management storage.</p>
             </div>
             <div class="item">
                 <h3>Snake Game</h3>
-                <span>C#</span>
+                <span><i class="fa-solid fa-tags"></i> C#</span>
                 <p>Core game logic designed with console graphics and responsive real-time input handling.</p>
             </div>
         </section>
 
         <!-- Skills -->
         <section>
-            <h2>Technical Skills</h2>
+            <h2><i class="fa-solid fa-laptop-code"></i> Technical Skills</h2>
             <div class="skills-grid">
                 <div class="skill-tag">DevOps & Cloud</div>
                 <div class="skill-tag">Flutter & Dart</div>
@@ -112,5 +218,19 @@
         </footer>
     </div>
 
+    <!-- Interactive JavaScript -->
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const icon = document.getElementById('themeIcon');
+            if(document.body.classList.contains('light-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+    </script>
 </body>
 </html>
