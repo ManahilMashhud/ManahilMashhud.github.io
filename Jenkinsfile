@@ -56,9 +56,9 @@ pipeline {
                     # 3. Purani local latest image hatao taake cache ka masla na ho
                     docker rmi ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:latest || true
                     
-                    # 4. Docker Compose ke zariye naye version ki image pull karke container live karo
-                    docker compose pull
-                    docker compose up -d
+                    # 4. Docker Compose ke zariye naye version ki image pull karke container live karo (hyphen fix)
+                    docker-compose pull
+                    docker-compose up -d
                     
                     echo "Deployment completed successfully!"
                 '''
