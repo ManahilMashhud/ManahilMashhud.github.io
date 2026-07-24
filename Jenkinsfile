@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         // Aapke bataye hue IPs ke mutabiq Harbor registry ka address
-        HARBOR_REGISTRY = '192.168.5.234:8085'
+        HARBOR_REGISTRY = '192.168.5.234'
         PROJECT_NAME    = 'my-portfolio'
         IMAGE_NAME      = 'my-portfolio'
         CREDENTIALS_ID  = 'harbor-login' // Jenkins mein save kiye gaye Harbor credentials ki ID
