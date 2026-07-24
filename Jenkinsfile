@@ -54,7 +54,7 @@ pipeline {
                     docker ps -a -q --filter "publish=8081" | xargs -r docker rm || true
                     
                     # 3. Purani local latest image hatao taake cache ka masla na ho
-                    docker rmi ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:latest || true
+                    docker rmi ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:16 || true
                     
                     # 4. Docker Compose ke zariye naye version ki image pull karke container live karo (hyphen fix)
                     docker-compose pull
