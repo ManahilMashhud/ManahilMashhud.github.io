@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  my-portfolio:
+    image: 192.168.5.234:8085/my-portfolio/my-portfolio:latest
+    container_name: portfolio-container
+    ports:
+      - "8080:80"
+    restart: always
