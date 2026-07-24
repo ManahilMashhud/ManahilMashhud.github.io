@@ -6,7 +6,7 @@ pipeline {
         HARBOR_REGISTRY = '192.168.5.234'
         PROJECT_NAME    = 'my-portfolio'
         IMAGE_NAME      = 'my-portfolio'
-        CREDENTIALS_ID  = 'harbor-login' // Jenkins mein save kiye gaye Harbor credentials ki ID
+        CREDENTIALS_ID  = 'harbor-creds' // Jenkins mein save kiye gaye Harbor credentials ki ID
     }
 
     stages {
