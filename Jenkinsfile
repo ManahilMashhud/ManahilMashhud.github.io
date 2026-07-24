@@ -58,7 +58,7 @@ pipeline {
                     
                     # 4. Docker Compose ke zariye naye version ki image pull karke container live karo (hyphen fix)
                     docker-compose pull
-                    docker-compose up -d
+                    docker-compose up -d --force-recreate
                     
                     echo "Deployment completed successfully!"
                 '''
