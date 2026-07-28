@@ -30,7 +30,10 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry("http://${HARBOR_REGISTRY}", "${CREDENTIALS_ID}") {
+                        // 1. Build number wali image push hogi
                         app.push("${BUILD_NUMBER}")
+                        
+                        // 2. Latest tag wali image push hogi
                         app.push("latest")
                     }
                 }
@@ -39,14 +42,19 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh '''
-                    echo "Connecting to Kubernetes server to update deployment image tag: ${BUILD_NUMBER}..."
-                    
-                    # SSH ke zariye 235 server par jaakar kubectl command chalayenge
-                    ssh -o StrictHostKeyChecking=no devops@192.168.5.235 "kubectl set image deployment/manahil-app manahil-app=${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:${BUILD_NUMBER} && kubectl rollout status deployment/manahil-app"
-                    
-                    echo "Kubernetes deployment completed successfully!"
-                '''
+                withCredentials([file(credentialsId: 'kubeconfig-file', variable: 'KUBECONFIG')]) {
+                    sh '''
+                        echo "Updating Kubernetes deployment with new image tag: ${BUILD_NUMBER}..."
+                        
+                        # Kubernetes deployment ka image tag update karna (rolling update)
+                        kubectl set image deployment/manahil-app manahil-app=${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:${BUILD_NUMBER}
+                        
+                        # Rollout status check karna ke deployment successfully complete ho gayi ya nahi
+                        kubectl rollout status deployment/manahil-app
+                        
+                        echo "Kubernetes deployment completed successfully!"
+                    '''
+                }
             }
         }
     }
