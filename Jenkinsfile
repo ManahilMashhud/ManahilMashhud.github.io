@@ -40,27 +40,18 @@ pipeline {
             }
         }
 
-        stage('Deploy to Server') {
+        stage('Deploy to Kubernetes') {
             steps {
                 sh '''
-                    echo "Deploying latest image to server using Docker Compose..."
+                    echo "Updating Kubernetes deployment with new image tag: ${BUILD_NUMBER}..."
                     
-                    # 1. Purana container roko aur hatao
-                    docker stop portfolio-container || true
-                    docker rm portfolio-container || true
+                    # Kubernetes deployment ka image tag update karna (rolling update)
+                    kubectl set image deployment/manahil-app manahil-app=${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:${BUILD_NUMBER}
                     
-                    # 2. Agar port 8081 par koi aur stray container chalu ho toh usko free karo
-                    docker ps -q --filter "publish=8081" | xargs -r docker stop || true
-                    docker ps -a -q --filter "publish=8081" | xargs -r docker rm || true
+                    # Rollout status check karna ke deployment successfully complete ho gayi ya nahi
+                    kubectl rollout status deployment/manahil-app
                     
-                    # 3. Purani local latest image hatao taake cache ka masla na ho
-                    docker rmi ${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:latest || true
-                    
-                    # 4. Docker Compose ke zariye naye version ki image pull karke container live karo (hyphen fix)
-                    docker-compose pull
-                    docker-compose up -d --force-recreate
-                    
-                    echo "Deployment completed successfully!"
+                    echo "Kubernetes deployment completed successfully!"
                 '''
             }
         }
