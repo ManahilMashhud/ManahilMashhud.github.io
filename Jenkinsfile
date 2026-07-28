@@ -40,21 +40,22 @@ pipeline {
             }
         }
 
-      stage('Deploy to Kubernetes') {
-    steps {
-        withCredentials([file(credentialsId: 'kubeconfig-file', variable: 'KUBECONFIG')]) {
-            sh '''
-                echo "Updating Kubernetes deployment with new image tag: ${BUILD_NUMBER}..."
-                
-                # Kubernetes deployment ka image tag update karna (rolling update)
-                kubectl set image deployment/manahil-app manahil-app=${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:${BUILD_NUMBER}
-                
-                # Rollout status check karna ke deployment successfully complete ho gayi ya nahi
-                kubectl rollout status deployment/manahil-app
-                
-                echo "Kubernetes deployment completed successfully!"
-            '''
+        stage('Deploy to Kubernetes') {
+            steps {
+                withCredentials([file(credentialsId: 'kubeconfig-file', variable: 'KUBECONFIG')]) {
+                    sh '''
+                        echo "Updating Kubernetes deployment with new image tag: ${BUILD_NUMBER}..."
+                        
+                        # Kubernetes deployment ka image tag update karna (rolling update)
+                        kubectl set image deployment/manahil-app manahil-app=${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:${BUILD_NUMBER}
+                        
+                        # Rollout status check karna ke deployment successfully complete ho gayi ya nahi
+                        kubectl rollout status deployment/manahil-app
+                        
+                        echo "Kubernetes deployment completed successfully!"
+                    '''
+                }
+            }
         }
-        
     }
 }
