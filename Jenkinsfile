@@ -9,6 +9,11 @@ pipeline {
         
         TAG_VERSION     = "${BUILD_NUMBER}"
         TAG_LATEST      = "latest"
+
+        APP_SERVER      = '192.168.5.235'
+        APP_USER        = 'devops'
+        K8S_DEPLOYMENT  = 'manahil-app'
+        K8S_NAMESPACE   = 'default'
     }
 
     stages {
@@ -30,10 +35,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry("http://${HARBOR_REGISTRY}", "${CREDENTIALS_ID}") {
-                        // 1. Build number wali image push hogi
                         app.push("${BUILD_NUMBER}")
-                        
-                        // 2. Latest tag wali image push hogi
                         app.push("latest")
                     }
                 }
@@ -42,19 +44,43 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                withCredentials([file(credentialsId: 'kubeconfig-file', variable: 'KUBECONFIG')]) {
-                    sh '''
-                        echo "Updating Kubernetes deployment with new image tag: ${BUILD_NUMBER}..."
+                sh '''
+                    set -e
+                    echo "Connecting to Kubernetes server to update deployment..."
+                    
+                    ssh -o StrictHostKeyChecking=no "${APP_USER}@${APP_SERVER}" \
+                        "NAMESPACE='${K8S_NAMESPACE}' \
+                         NEW_IMAGE='${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:${BUILD_NUMBER}' \
+                         DEPLOYMENT='${K8S_DEPLOYMENT}' \
+                         bash -s" <<'REMOTE_SCRIPT'
+
+                        set -e
                         
-                        # Kubernetes deployment ka image tag update karna (rolling update)
-                        kubectl set image deployment/manahil-app manahil-app=${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:${BUILD_NUMBER}
-                        
-                        # Rollout status check karna ke deployment successfully complete ho gayi ya nahi
-                        kubectl rollout status deployment/manahil-app
-                        
+                        # Container ka naam dynamically nikalna taake koi error na aaye
+                        CONTAINER_NAME=$(kubectl get deployment "$DEPLOYMENT" \
+                            --namespace "$NAMESPACE" \
+                            -o jsonpath='{.spec.template.spec.containers[0].name}')
+
+                        if [ -z "$CONTAINER_NAME" ]; then
+                            echo "Could not determine the container name."
+                            exit 1
+                        fi
+
+                        echo "Updating deployment with container: $CONTAINER_NAME and image: $NEW_IMAGE"
+
+                        kubectl set image \
+                            deployment/"$DEPLOYMENT" \
+                            "$CONTAINER_NAME=$NEW_IMAGE" \
+                            --namespace "$NAMESPACE"
+
+                        kubectl rollout status \
+                            deployment/"$DEPLOYMENT" \
+                            --namespace "$NAMESPACE" \
+                            --timeout=180s
+
                         echo "Kubernetes deployment completed successfully!"
-                    '''
-                }
+REMOTE_SCRIPT
+                '''
             }
         }
     }
