@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc-claim  # Yeh wahi naam hai jo deployment.yml mein use kiya hai
+  namespace: death
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi  # Hum 1 GB storage maang rahe hain
