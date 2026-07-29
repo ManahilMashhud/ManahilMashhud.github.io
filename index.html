@@ -3,32 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manahil Mashhud | Cyber Portfolio</title>
+    <title>Manahil Mashhud | Cyber Security Portfolio</title>
     <!-- FontAwesome icons for modern look -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #030712;      /* Ultra dark futuristic black */
-            --card-bg: #0f172a;        /* Deep sleek dark slate */
-            --text-color: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-cyan: #22d3ee;
-            --accent-purple: #c084fc;
-            --accent-gradient: linear-gradient(135deg, #22d3ee 0%, #c084fc 100%);
-            --border-color: rgba(34, 211, 238, 0.2);
-            --card-shadow: 0 0 20px rgba(34, 211, 238, 0.05);
+            --bg-color: #050203;      /* Deep obsidian black with a hint of dark red */
+            --card-bg: #0d0608;        /* Dark maroon slate container */
+            --text-color: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-red: #ff1e56;     /* Hacker crimson red */
+            --accent-glow: #8b0000;    /* Deep blood maroon */
+            --accent-gradient: linear-gradient(135deg, #ff1e56 0%, #8b0000 100%);
+            --border-color: rgba(255, 30, 86, 0.25);
+            --card-shadow: 0 0 25px rgba(255, 30, 86, 0.08);
         }
 
         .light-mode {
-            --bg-color: #f1f5f9;      
+            --bg-color: #fdf2f4;      
             --card-bg: #ffffff;        
-            --text-color: #0f172a;
-            --text-muted: #64748b;
-            --accent-cyan: #0284c7;
-            --accent-purple: #7c3aed;
-            --accent-gradient: linear-gradient(135deg, #0284c7 0%, #7c3aed 100%);
-            --border-color: rgba(2, 132, 199, 0.2);
-            --card-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            --text-color: #1f1215;
+            --text-muted: #6b4c53;
+            --accent-red: #d90429;
+            --accent-glow: #800f2f;
+            --accent-gradient: linear-gradient(135deg, #d90429 0%, #800f2f 100%);
+            --border-color: rgba(217, 4, 41, 0.2);
+            --card-shadow: 0 10px 25px rgba(128, 15, 47, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background 0.3s, color 0.3s, border-color 0.3s; }
@@ -42,16 +42,16 @@
             top: 20px;
             right: 20px;
             background: var(--card-bg);
-            color: var(--accent-cyan);
+            color: var(--accent-red);
             border: 1px solid var(--border-color);
             padding: 10px 18px;
             border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 0 15px rgba(34, 211, 238, 0.15);
+            box-shadow: 0 0 15px rgba(255, 30, 86, 0.2);
             font-size: 1rem;
             z-index: 1000;
         }
-        .theme-toggle:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--accent-cyan); }
+        .theme-toggle:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--accent-red); }
 
         /* Header */
         header { 
@@ -90,7 +90,7 @@
             background: var(--accent-gradient);
             color: #fff;
             border-color: transparent;
-            box-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
+            box-shadow: 0 0 15px rgba(255, 30, 86, 0.4);
             transform: translateY(-2px);
         }
 
@@ -104,9 +104,9 @@
             border: 1px solid var(--border-color);
             position: relative;
         }
-        section h2 { color: var(--accent-cyan); margin-bottom: 20px; font-size: 1.6rem; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        section h2 { color: var(--accent-red); margin-bottom: 20px; font-size: 1.6rem; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
         
-        .item { margin-bottom: 25px; padding-left: 15px; border-left: 3px solid var(--accent-cyan); }
+        .item { margin-bottom: 25px; padding-left: 15px; border-left: 3px solid var(--accent-red); }
         .item:last-child { margin-bottom: 0; }
         .item h3 { font-size: 1.25rem; color: var(--text-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .item span { font-size: 0.9rem; color: var(--text-muted); display: block; margin: 4px 0 8px 0; font-weight: 500; }
@@ -115,23 +115,23 @@
         .project-link {
             font-size: 0.85rem;
             padding: 5px 12px;
-            background: rgba(34, 211, 238, 0.1);
-            color: var(--accent-cyan);
+            background: rgba(255, 30, 86, 0.1);
+            color: var(--accent-red);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
         }
         .project-link:hover {
-            background: var(--accent-cyan);
-            color: #030712;
-            box-shadow: 0 0 10px var(--accent-cyan);
+            background: var(--accent-red);
+            color: #050203;
+            box-shadow: 0 0 10px var(--accent-red);
         }
 
         ul { padding-left: 20px; color: var(--text-muted); }
         ul li { margin-bottom: 6px; }
 
-        /* Multi-Color Skills Grid */
+        /* Hacker Skills Grid */
         .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; }
         .skill-tag { 
             padding: 10px 16px; 
@@ -144,19 +144,19 @@
         }
         .skill-tag:hover {
             transform: translateY(-3px);
-            box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
-            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(255, 30, 86, 0.25);
+            border-color: var(--accent-red);
         }
 
-        /* Distinct neon glowing tags */
-        .tag-devops { background: rgba(34, 211, 238, 0.08); color: #22d3ee; }
-        .tag-flutter { background: rgba(192, 132, 252, 0.08); color: #c084fc; }
-        .tag-java { background: rgba(244, 63, 94, 0.08); color: #fb7185; }
-        .tag-csharp { background: rgba(236, 72, 153, 0.08); color: #f472b6; }
-        .tag-firebase { background: rgba(251, 146, 60, 0.08); color: #fb923c; }
-        .tag-git { background: rgba(239, 68, 68, 0.08); color: #f87171; }
-        .tag-linux { background: rgba(34, 197, 94, 0.08); color: #4ade80; }
-        .tag-sql { background: rgba(234, 179, 8, 0.08); color: #facc15; }
+        /* Distinct crimson neon glowing tags */
+        .tag-devops { background: rgba(255, 30, 86, 0.08); color: #ff3366; }
+        .tag-flutter { background: rgba(220, 20, 60, 0.08); color: #ff4d6d; }
+        .tag-java { background: rgba(180, 0, 40, 0.08); color: #ff6b8b; }
+        .tag-csharp { background: rgba(255, 75, 110, 0.08); color: #ff758c; }
+        .tag-firebase { background: rgba(245, 40, 145, 0.08); color: #ff6090; }
+        .tag-git { background: rgba(230, 57, 70, 0.08); color: #e63946; }
+        .tag-linux { background: rgba(193, 18, 31, 0.08); color: #d90429; }
+        .tag-sql { background: rgba(142, 14, 39, 0.08); color: #bc6c25; }
 
         /* Footer */
         footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.9rem; }
