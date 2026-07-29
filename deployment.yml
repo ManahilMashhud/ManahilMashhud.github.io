@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-portfolio-deployment
+  namespace: death
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portfolio
+  template:
+    metadata:
+      labels:
+        app: portfolio
+    spec:
+      containers:
+      - name: portfolio
+        image: 192.168.5.234/my-portfolio/my-portfolio:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: portfolio-storage
+      volumes:
+      - name: portfolio-storage
+        persistentVolumeClaim:
+          claimName: my-pvc-claim
