@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-pv
+spec:
+  capacity:
+    storage: 1Gi  # Humne 1 GB ki space allocate ki hai
+  accessModes:
+    - ReadWriteOnce  # Iska matlab hai ke aik waqt mein aik hi node isko read/write kar sakta hai
+  hostPath:
+    path: "/mnt/portfolio-data"  # Server ke andar ka real folder jahan data save hoga
