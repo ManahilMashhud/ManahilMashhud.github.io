@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #0b0f19;       /* Deep modern dark, less bright blue */
+            --bg-color: #0b0f19;      /* Deep modern dark, less bright blue */
             --card-bg: #131b2e;        /* Rich dark card background */
             --text-color: #f1f5f9;
             --text-muted: #94a3b8;
@@ -96,9 +96,25 @@
         
         .item { margin-bottom: 25px; padding-left: 10px; border-left: 3px solid var(--accent-color); }
         .item:last-child { margin-bottom: 0; }
-        .item h3 { font-size: 1.25rem; color: var(--text-color); }
+        .item h3 { font-size: 1.25rem; color: var(--text-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .item span { font-size: 0.9rem; color: var(--text-muted); display: block; margin: 4px 0 8px 0; font-weight: 500; }
         
+        /* Action Links for Projects */
+        .project-link {
+            font-size: 0.85rem;
+            padding: 4px 10px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .project-link:hover {
+            background: var(--accent-color);
+            color: #fff;
+        }
+
         ul { padding-left: 20px; color: var(--text-muted); }
         ul li { margin-bottom: 6px; }
 
@@ -150,7 +166,7 @@
     <div class="container fade-in">
         <!-- Header -->
         <header>
-            <h1>Minahal Waseem Here!</h1>
+            <h1>Manahil Mashhud Here!</h1>
             <p>CS Undergrad @ KIET | DevOps Intern @ Pakistan Single Window | Flutter Developer</p>
             <div class="contact-links">
                 <a href="mailto:manahilmashhud7@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a> 
@@ -187,20 +203,52 @@
         <!-- Projects -->
         <section>
             <h2><i class="fa-solid fa-code"></i> Key Projects</h2>
+            
             <div class="item">
-                <h3>YapYap – Real-Time Chat App</h3>
+                <h3>
+                    <span>Automated CI/CD Portfolio Pipeline</span>
+                    <a href="https://github.com" target="_blank" class="project-link"><i class="fa-brands fa-github"></i> View Code</a>
+                </h3>
+                <span><i class="fa-solid fa-tags"></i> Jenkins, Docker, Kubernetes (MicroK8s), Harbor, GitLab</span>
+                <p>Designed and deployed an end-to-end automated DevOps pipeline taking code from GitLab, building container images, pushing to Harbor registry, and deploying seamlessly onto a Kubernetes cluster with persistent storage and NodePort mapping.</p>
+            </div>
+
+            <div class="item">
+                <h3>
+                    <span>YapYap – Real-Time Chat App</span>
+                    <a href="https://github.com" target="_blank" class="project-link"><i class="fa-brands fa-github"></i> View Code</a>
+                </h3>
                 <span><i class="fa-solid fa-tags"></i> Java, Android Studio, Firebase</span>
                 <p>Real-time messaging platform equipped with secure Firebase authentication and persistent message storage.</p>
             </div>
             <div class="item">
-                <h3>MindStack & To-Do List Apps</h3>
+                <h3>
+                    <span>MindStack & To-Do List Apps</span>
+                    <a href="https://github.com" target="_blank" class="project-link"><i class="fa-brands fa-github"></i> View Code</a>
+                </h3>
                 <span><i class="fa-solid fa-tags"></i> Java, Android Studio</span>
                 <p>Full CRUD note-taking application with dynamic RecyclerView and persistent task management storage.</p>
             </div>
             <div class="item">
-                <h3>Snake Game</h3>
+                <h3>
+                    <span>Snake Game</span>
+                    <a href="https://github.com" target="_blank" class="project-link"><i class="fa-brands fa-github"></i> View Code</a>
+                </h3>
                 <span><i class="fa-solid fa-tags"></i> C#</span>
                 <p>Core game logic designed with console graphics and responsive real-time input handling.</p>
+            </div>
+        </section>
+
+        <!-- Certificates & Credentials -->
+        <section>
+            <h2><i class="fa-solid fa-certificate"></i> Certifications & Badges</h2>
+            <div class="item">
+                <h3>
+                    <span>Professional Certificates & Training</span>
+                    <a href="https://linkedin.com" target="_blank" class="project-link"><i class="fa-brands fa-linkedin"></i> View on LinkedIn</a>
+                </h3>
+                <span><i class="fa-regular fa-calendar"></i> Verified Credentials</span>
+                <p>Explore my verified credentials, badges, and professional completion certificates directly showcased on my LinkedIn profile.</p>
             </div>
         </section>
 
@@ -208,12 +256,12 @@
         <section>
             <h2><i class="fa-solid fa-laptop-code"></i> Technical Skills</h2>
             <div class="skills-grid">
-                <div class="skill-tag tag-devops">DevOps & Cloud</div>
+                <div class="skill-tag tag-devops">DevOps & Cloud (Docker/K8s/Jenkins)</div>
                 <div class="skill-tag tag-flutter">Flutter & Dart</div>
                 <div class="skill-tag tag-java">Java & Kotlin</div>
                 <div class="skill-tag tag-csharp">C#</div>
                 <div class="skill-tag tag-firebase">Firebase & REST APIs</div>
-                <div class="skill-tag tag-git">Git & GitHub</div>
+                <div class="skill-tag tag-git">Git, GitLab & GitHub</div>
                 <div class="skill-tag tag-linux">Linux & Networking</div>
                 <div class="skill-tag tag-sql">MySQL</div>
             </div>
