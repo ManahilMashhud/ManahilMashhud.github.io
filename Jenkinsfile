@@ -12,7 +12,6 @@ pipeline {
 
         APP_SERVER      = '192.168.5.235'
         APP_USER        = 'devops'
-        K8S_DEPLOYMENT  = 'manahil'
         K8S_NAMESPACE   = 'death'
     }
 
@@ -46,37 +45,29 @@ pipeline {
             steps {
                 sh '''
                     set -e
-                    echo "Connecting to Kubernetes server to update deployment..."
+                    echo "Connecting to Kubernetes server to apply manifests..."
                     
                     ssh -o StrictHostKeyChecking=no "${APP_USER}@${APP_SERVER}" \
                         "NAMESPACE='${K8S_NAMESPACE}' \
-                         NEW_IMAGE='${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:${BUILD_NUMBER}' \
-                         DEPLOYMENT='${K8S_DEPLOYMENT}' \
+                         NEW_TAG='${TAG_VERSION}' \
+                         REGISTRY='${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}' \
                          bash -s" <<'REMOTE_SCRIPT'
 
                         set -e
                         
-                        # Container ka naam dynamically nikalna taake koi error na aaye
-                        CONTAINER_NAME=$(kubectl get deployment "$DEPLOYMENT" \
-                            --namespace "$NAMESPACE" \
-                            -o jsonpath='{.spec.template.spec.containers[0].name}')
-
-                        if [ -z "$CONTAINER_NAME" ]; then
-                            echo "Could not determine the container name."
-                            exit 1
+                        # Agar workspace par files hain, toh deployment file ke andar naya tag update kar dete hain
+                        if [ -f deployment.yml ]; then
+                            sed -i "s|image:.*|image: $REGISTRY:$NEW_TAG|g" deployment.yml
                         fi
 
-                        echo "Updating deployment with container: $CONTAINER_NAME and image: $NEW_IMAGE"
+                        # Kubernetes manifest files apply karna
+                        kubectl apply -f pv.yml --namespace "$NAMESPACE" || true
+                        kubectl apply -f pvc.yml --namespace "$NAMESPACE" || true
+                        kubectl apply -f deployment.yml --namespace "$NAMESPACE"
+                        kubectl apply -f service.yml --namespace "$NAMESPACE"
 
-                        kubectl set image \
-                            deployment/"$DEPLOYMENT" \
-                            "$CONTAINER_NAME=$NEW_IMAGE" \
-                            --namespace "$NAMESPACE"
-
-                        kubectl rollout status \
-                            deployment/"$DEPLOYMENT" \
-                            --namespace "$NAMESPACE" \
-                            --timeout=180s
+                        # Rollout status check karna taake confirm ho jaye ke app chal gayi hai
+                        kubectl rollout status deployment/my-portfolio-deployment --namespace "$NAMESPACE" --timeout=180s
 
                         echo "Kubernetes deployment completed successfully!"
 REMOTE_SCRIPT
