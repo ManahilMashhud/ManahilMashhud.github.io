@@ -3,302 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manahil Mashhud | Cyber Security Portfolio</title>
+    <title>Manahil Mashhud | DevOps & Cloud Portfolio</title>
     <!-- FontAwesome icons for modern look -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #050203;      /* Deep obsidian black with a hint of dark red */
-            --card-bg: #0d0608;        /* Dark maroon slate container */
-            --text-color: #f3f4f6;
-            --text-muted: #9ca3af;
-            --accent-red: #ff1e56;     /* Hacker crimson red */
-            --accent-glow: #8b0000;    /* Deep blood maroon */
-            --accent-gradient: linear-gradient(135deg, #ff1e56 0%, #8b0000 100%);
-            --border-color: rgba(255, 30, 86, 0.25);
-            --card-shadow: 0 0 25px rgba(255, 30, 86, 0.08);
+            --bg-color: #030712;      /* Ultra dark futuristic blue-black background */
+            --card-bg: #0f172a;        /* Deep sleek dark slate container */
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-cyan: #22d3ee;    /* Neon Blue / Cyan accent */
+            --accent-purple: #38bdf8;  /* Sky blue gradient shade */
+            --accent-gradient: linear-gradient(135deg, #22d3ee 0%, #38bdf8 100%);
+            --border-color: rgba(34, 211, 238, 0.2);
+            --card-shadow: 0 0 25px rgba(34, 211, 238, 0.08);
         }
 
-        .light-mode {
-            --bg-color: #fdf2f4;      
-            --card-bg: #ffffff;        
-            --text-color: #1f1215;
-            --text-muted: #6b4c53;
-            --accent-red: #d90429;
-            --accent-glow: #800f2f;
-            --accent-gradient: linear-gradient(135deg, #d90429 0%, #800f2f 100%);
-            --border-color: rgba(217, 4, 41, 0.2);
-            --card-shadow: 0 10px 25px rgba(128, 15, 47, 0.08);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background 0.3s, color 0.3s, border-color 0.3s; }
-        body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; padding: 20px; }
-        
-        .container { max-width: 900px; margin: 30px auto; padding: 20px; }
-
-        /* Theme Toggle Button */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--card-bg);
-            color: var(--accent-red);
-            border: 1px solid var(--border-color);
-            padding: 10px 18px;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(255, 30, 86, 0.2);
-            font-size: 1rem;
+        /* Top Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background: rgba(3, 7, 18, 0.9);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
         }
-        .theme-toggle:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--accent-red); }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--text-color);
+            letter-spacing: 1px;
+        }
+        .nav-logo i { color: var(--accent-cyan); font-size: 1.4rem; }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); }
 
-        /* Header */
-        header { 
-            text-align: center; 
-            padding: 60px 20px; 
-            background: var(--card-bg); 
-            border-radius: 20px; 
-            box-shadow: var(--card-shadow); 
-            margin-bottom: 25px; 
-            border: 1px solid var(--border-color);
+        .nav-socials {
+            display: flex;
+            gap: 15px;
+        }
+        .nav-socials a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .nav-socials a:hover { color: var(--accent-cyan); }
+
+        /* Hero Section with Background Image & Overlay */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 90px 60px;
+            /* Professional DevOps server/datacenter background image with dark blue overlay */
+            background: linear-gradient(135deg, rgba(3, 7, 18, 0.95), rgba(15, 23, 42, 0.9)), 
+                        url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
             position: relative;
             overflow: hidden;
+            border-bottom: 1px solid var(--border-color);
         }
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 3px;
-            background: var(--accent-gradient);
+        .hero-content {
+            max-width: 500px;
+            z-index: 2;
         }
-        header h1 { font-size: 3rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; letter-spacing: -1px; }
-        header p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; font-weight: 500; }
-        
-        .contact-links a { 
-            color: var(--text-color); 
-            background: var(--bg-color);
-            border: 1px solid var(--border-color);
-            text-decoration: none; 
-            padding: 9px 18px;
-            margin: 0 6px; 
-            border-radius: 10px;
-            font-weight: 600; 
-            display: inline-block;
-            font-size: 0.95rem;
-        }
-        .contact-links a:hover { 
-            background: var(--accent-gradient);
-            color: #fff;
-            border-color: transparent;
-            box-shadow: 0 0 15px rgba(255, 30, 86, 0.4);
-            transform: translateY(-2px);
-        }
-
-        /* Sections */
-        section { 
-            background: var(--card-bg); 
-            padding: 30px; 
-            border-radius: 20px; 
-            margin-bottom: 25px; 
-            box-shadow: var(--card-shadow); 
-            border: 1px solid var(--border-color);
-            position: relative;
-        }
-        section h2 { color: var(--accent-red); margin-bottom: 20px; font-size: 1.6rem; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        
-        .item { margin-bottom: 25px; padding-left: 15px; border-left: 3px solid var(--accent-red); }
-        .item:last-child { margin-bottom: 0; }
-        .item h3 { font-size: 1.25rem; color: var(--text-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-        .item span { font-size: 0.9rem; color: var(--text-muted); display: block; margin: 4px 0 8px 0; font-weight: 500; }
-        
-        /* Action Links for Projects */
-        .project-link {
+        .hero-subtitle {
             font-size: 0.85rem;
-            padding: 5px 12px;
-            background: rgba(255, 30, 86, 0.1);
-            color: var(--accent-red);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 25px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 4px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
         }
-        .project-link:hover {
-            background: var(--accent-red);
-            color: #050203;
-            box-shadow: 0 0 10px var(--accent-red);
+        .btn-primary:hover {
+            background: var(--accent-cyan);
+            color: #030712;
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
         }
 
-        ul { padding-left: 20px; color: var(--text-muted); }
-        ul li { margin-bottom: 6px; }
-
-        /* Hacker Skills Grid */
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; }
-        .skill-tag { 
-            padding: 10px 16px; 
-            border-radius: 10px; 
-            font-size: 0.95rem; 
-            font-weight: 600;
+        /* Hero Image Card Feature (matching the reference photo layout) */
+        .hero-card-preview {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
             border: 1px solid var(--border-color);
-            cursor: default;
-            transition: transform 0.2s, box-shadow 0.2s;
+            border-radius: 12px;
+            width: 520px;
+            height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
         }
-        .skill-tag:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 15px rgba(255, 30, 86, 0.25);
-            border-color: var(--accent-red);
+        .hero-card-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.75;
+            transition: transform 0.5s;
+        }
+        .hero-card-preview:hover img {
+            transform: scale(1.03);
+        }
+        .hero-card-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(3, 7, 18, 0.85);
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
         }
 
-        /* Distinct crimson neon glowing tags */
-        .tag-devops { background: rgba(255, 30, 86, 0.08); color: #ff3366; }
-        .tag-flutter { background: rgba(220, 20, 60, 0.08); color: #ff4d6d; }
-        .tag-java { background: rgba(180, 0, 40, 0.08); color: #ff6b8b; }
-        .tag-csharp { background: rgba(255, 75, 110, 0.08); color: #ff758c; }
-        .tag-firebase { background: rgba(245, 40, 145, 0.08); color: #ff6090; }
-        .tag-git { background: rgba(230, 57, 70, 0.08); color: #e63946; }
-        .tag-linux { background: rgba(193, 18, 31, 0.08); color: #d90429; }
-        .tag-sql { background: rgba(142, 14, 39, 0.08); color: #bc6c25; }
-
-        /* Footer */
-        footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.9rem; }
-
-        .fade-in {
-            animation: fadeIn 0.8s ease-in-out;
+        /* Services Section */
+        .services-section {
+            padding: 100px 60px;
+            max-width: 1300px;
+            margin: 0 auto;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .services-grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: start;
+        }
+        .services-intro h4 {
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .services-intro h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .services-intro p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .services-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(34, 211, 238, 0.1);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--accent-cyan);
+            font-size: 1.3rem;
+            border: 1px solid var(--border-color);
+        }
+        .service-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media(max-width: 900px) {
+            .hero { flex-direction: column; gap: 40px; padding: 40px 20px; }
+            .hero-card-preview { width: 100%; height: 250px; }
+            .services-grid-layout { grid-template-columns: 1fr; }
+            .services-cards-grid { grid-template-columns: 1fr; }
+            .navbar { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Dark/Light Theme Button -->
-    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">
-        <i class="fa-solid fa-moon" id="themeIcon"></i> Mode
-    </button>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <i class="fa-solid fa-terminal"></i> MANAHIL MASHHUD
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="nav-socials">
+            <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:manahilmashhud7@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+    </nav>
 
-    <div class="container fade-in">
-        <!-- Header -->
-        <header>
-            <h1>Manahil Mashhud Here!</h1>
-            <p>CS Undergrad @ KIET | DevOps Intern @ Pakistan Single Window | Flutter Developer</p>
-            <div class="contact-links">
-                <a href="mailto:manahilmashhud7@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a> 
-                <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a> 
-                <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-            </div>
-        </header>
+    <!-- Hero Banner Section with Image Integration -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">For Cloud, Automation & DevOps</div>
+            <h1 class="hero-title">DEVOPS & CLOUD PORTFOLIO</h1>
+            <a href="#" class="btn-primary">Explore Projects</a>
+        </div>
+        <div class="hero-card-preview">
+            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80" alt="DevOps Server Infrastructure">
+            <div class="hero-card-badge"><i class="fa-solid fa-server"></i> Automated Pipeline in Action</div>
+        </div>
+    </section>
 
-        <!-- About Me -->
-        <section>
-            <h2><i class="fa-solid fa-user"></i> About Me</h2>
-            <p>Computer Science undergraduate with hands-on development experience and a foundation in cloud computing, networking, and systems concepts. Passionate about building scalable software solutions, DevOps automation, and modern mobile app development.</p>
-        </section>
+    <!-- Services / What We Do Section -->
+    <section class="services-section">
+        <div class="services-grid-layout">
+            <div class="services-intro">
+                <h4>OUR EXPERTISE</h4>
+                <h2>WHAT I DO?</h2>
+                <p>As a DevOps intern and CS undergraduate, I focus on automating software lifecycles, containerizing applications, and deploying scalable cloud infrastructure with robust CI/CD pipelines.</p>
+                <a href="#" class="btn-primary">View All Services</a>
+            </div>
+            <div class="services-cards-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-infinity"></i></div>
+                    <h3>CI/CD Pipelines</h3>
+                    <p>Building automated continuous integration and deployment workflows using Jenkins, GitLab, and containerization tools.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-cubes"></i></div>
+                    <h3>Containerization & K8s</h3>
+                    <p>Packaging applications into Docker containers and orchestrating them efficiently across MicroK8s clusters with persistent storage.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-network-wired"></i></div>
+                    <h3>Cloud & Linux Servers</h3>
+                    <p>Managing virtual machine environments, configuring registry services like Harbor, and handling network routing and port forwarding.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                    <h3>Mobile & App Solutions</h3>
+                    <p>Developing responsive cross-platform mobile apps with Flutter and integrating real-time Firebase authentication and databases.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Experience -->
-        <section>
-            <h2><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
-            <div class="item">
-                <h3>DevOps Intern — Pakistan Single Window (PSW)</h3>
-                <span><i class="fa-regular fa-calendar"></i> Jul 2026 – Present | Karachi, Pakistan</span>
-                <p>Learning modern deployment practices, automation, Linux, version control, CI/CD, and cloud technologies.</p>
-            </div>
-            <div class="item">
-                <h3>Flutter Developer Intern — Appverse Technologies</h3>
-                <span><i class="fa-regular fa-calendar"></i> Feb 2026 – Apr 2026 | Remote</span>
-                <ul>
-                    <li>Built Flutter mobile apps with real-time Firebase integration (Auth, Firestore, Storage).</li>
-                    <li>Implemented responsive UI layouts, animations, and managed state using Provider.</li>
-                    <li>Consumed REST APIs and deployed production-ready applications.</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Projects -->
-        <section>
-            <h2><i class="fa-solid fa-code"></i> Key Projects</h2>
-            
-            <div class="item">
-                <h3>
-                    <span>Automated CI/CD Portfolio Pipeline</span>
-                    <a href="https://github.com" target="_blank" class="project-link"><i class="fa-brands fa-github"></i> View Code</a>
-                </h3>
-                <span><i class="fa-solid fa-tags"></i> Jenkins, Docker, Kubernetes (MicroK8s), Harbor, GitLab</span>
-                <p>Designed and deployed an end-to-end automated DevOps pipeline taking code from GitLab, building container images, pushing to Harbor registry, and deploying seamlessly onto a Kubernetes cluster with persistent storage and NodePort mapping.</p>
-            </div>
-
-            <div class="item">
-                <h3>
-                    <span>YapYap – Real-Time Chat App</span>
-                    <a href="https://github.com" target="_blank" class="project-link"><i class="fa-brands fa-github"></i> View Code</a>
-                </h3>
-                <span><i class="fa-solid fa-tags"></i> Java, Android Studio, Firebase</span>
-                <p>Real-time messaging platform equipped with secure Firebase authentication and persistent message storage.</p>
-            </div>
-            <div class="item">
-                <h3>
-                    <span>MindStack & To-Do List Apps</span>
-                    <a href="https://github.com" target="_blank" class="project-link"><i class="fa-brands fa-github"></i> View Code</a>
-                </h3>
-                <span><i class="fa-solid fa-tags"></i> Java, Android Studio</span>
-                <p>Full CRUD note-taking application with dynamic RecyclerView and persistent task management storage.</p>
-            </div>
-            <div class="item">
-                <h3>
-                    <span>Snake Game</span>
-                    <a href="https://github.com" target="_blank" class="project-link"><i class="fa-brands fa-github"></i> View Code</a>
-                </h3>
-                <span><i class="fa-solid fa-tags"></i> C#</span>
-                <p>Core game logic designed with console graphics and responsive real-time input handling.</p>
-            </div>
-        </section>
-
-        <!-- Certificates & Credentials -->
-        <section>
-            <h2><i class="fa-solid fa-certificate"></i> Certifications & Badges</h2>
-            <div class="item">
-                <h3>
-                    <span>Professional Certificates & Training</span>
-                    <a href="https://linkedin.com" target="_blank" class="project-link"><i class="fa-brands fa-linkedin"></i> View on LinkedIn</a>
-                </h3>
-                <span><i class="fa-regular fa-calendar"></i> Verified Credentials</span>
-                <p>Explore my verified credentials, badges, and professional completion certificates directly showcased on my LinkedIn profile.</p>
-            </div>
-        </section>
-
-        <!-- Skills -->
-        <section>
-            <h2><i class="fa-solid fa-laptop-code"></i> Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-tag tag-devops">DevOps & Cloud (Docker/K8s/Jenkins)</div>
-                <div class="skill-tag tag-flutter">Flutter & Dart</div>
-                <div class="skill-tag tag-java">Java & Kotlin</div>
-                <div class="skill-tag tag-csharp">C#</div>
-                <div class="skill-tag tag-firebase">Firebase & REST APIs</div>
-                <div class="skill-tag tag-git">Git, GitLab & GitHub</div>
-                <div class="skill-tag tag-linux">Linux & Networking</div>
-                <div class="skill-tag tag-sql">MySQL</div>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2026 Manahil Mashhud. Built with Automated CI/CD Pipeline.</p>
-        </footer>
-    </div>
-
-    <!-- Interactive JavaScript -->
-    <script>
-        function toggleTheme() {
-            document.body.classList.toggle('light-mode');
-            const icon = document.getElementById('themeIcon');
-            if(document.body.classList.contains('light-mode')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
-        }
-    </script>
 </body>
 </html>
