@@ -12,8 +12,8 @@ pipeline {
 
         APP_SERVER      = '192.168.5.235'
         APP_USER        = 'devops'
-        K8S_DEPLOYMENT  = 'manahil-app'
-        K8S_NAMESPACE   = 'default'
+        K8S_DEPLOYMENT  = 'manahil'
+        K8S_NAMESPACE   = 'death'
     }
 
     stages {
