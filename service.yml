@@ -10,4 +10,4 @@ spec:
   ports:
     - port: 80         # Service ka apna port
       targetPort: 80     # Container ke andar ka port jahan app chal rahi hai
-      nodePort: 30081    # (Optional) Baahir se access karne ke liye fixed port (30000-32767 ke darmiyan)
+      nodePort: 30080    # (Optional) Baahir se access karne ke liye fixed port (30000-32767 ke darmiyan)
