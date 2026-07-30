@@ -25,7 +25,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    app = docker.build("${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:${BUILD_NUMBER}")
+                   // --no-cache add karne se Docker purani caching ignore karega aur naya code uthayega
+                    app = docker.build("${HARBOR_REGISTRY}/${PROJECT_NAME}/${IMAGE_NAME}:${BUILD_NUMBER}", "--no-cache .")
                 }
             }
         }
