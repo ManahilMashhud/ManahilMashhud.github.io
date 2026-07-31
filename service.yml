@@ -4,10 +4,11 @@ metadata:
   name: my-portfolio-service
   namespace: death
 spec:
-  type: NodePort  # Iska matlab hai ke yeh cluster ke baahir se bhi port ke zariye access ki ja sakegi
+  type: NodePort
   selector:
-    app: portfolio  # Yeh deployment wale pods ke sath connect ho jayegi
+    app: portfolio
   ports:
-    - port: 80         # Service ka apna port
-      targetPort: 80     # Container ke andar ka port jahan app chal rahi hai
-      nodePort: 30080    # (Optional) Baahir se access karne ke liye fixed port (30000-32767 ke darmiyan)
+    - protocol: TCP
+      port: 80         # Service port
+      targetPort: 80   # Port exposed by the portfolio container
+      nodePort: 30080  # External node port
