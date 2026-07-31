@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #030712;      /* Ultra dark futuristic blue-black background */
-            --card-bg: #0f172a;        /* Deep sleek dark slate container */
+            --bg-color: #120309;      /* Ultra dark sleek futuristic pink-black background */
+            --card-bg: #1a0f18;        /* Deep sleek dark pink-slate container */
             --text-color: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-cyan: #22d3ee;    /* Neon Blue / Cyan accent */
-            --accent-purple: #38bdf8;  /* Sky blue gradient shade */
-            --accent-gradient: linear-gradient(135deg, #22d3ee 0%, #38bdf8 100%);
-            --border-color: rgba(34, 211, 238, 0.2);
-            --card-shadow: 0 0 25px rgba(34, 211, 238, 0.08);
+            --text-muted: #d1b3c4;
+            --accent-cyan: #f472b6;    /* Vibrant neon pink accent */
+            --accent-purple: #fb7185;  /* Soft rose/magenta gradient shade */
+            --accent-gradient: linear-gradient(135deg, #f472b6 0%, #fb7185 100%);
+            --border-color: rgba(244, 114, 182, 0.2);
+            --card-shadow: 0 0 25px rgba(244, 114, 182, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -28,7 +28,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 60px;
-            background: rgba(3, 7, 18, 0.9);
+            background: rgba(18, 3, 9, 0.9);
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
@@ -79,8 +79,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 90px 60px;
-            /* Professional DevOps server/datacenter background image with dark blue overlay */
-            background: linear-gradient(135deg, rgba(3, 7, 18, 0.95), rgba(15, 23, 42, 0.9)), 
+            /* Professional DevOps server/datacenter background image with dark pink overlay */
+            background: linear-gradient(135deg, rgba(18, 3, 9, 0.95), rgba(26, 15, 24, 0.9)), 
                         url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
             position: relative;
             overflow: hidden;
@@ -123,13 +123,13 @@
         }
         .btn-primary:hover {
             background: var(--accent-cyan);
-            color: #030712;
-            box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+            color: #120309;
+            box-shadow: 0 0 20px rgba(244, 114, 182, 0.4);
         }
 
-        /* Hero Image Card Feature (matching the reference photo layout) */
+        /* Hero Image Card Feature */
         .hero-card-preview {
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(26, 15, 24, 0.85);
             backdrop-filter: blur(8px);
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -158,7 +158,7 @@
             position: absolute;
             bottom: 20px;
             left: 20px;
-            background: rgba(3, 7, 18, 0.85);
+            background: rgba(18, 3, 9, 0.85);
             padding: 8px 16px;
             border-radius: 6px;
             border: 1px solid var(--border-color);
@@ -217,7 +217,7 @@
         .service-icon {
             width: 50px;
             height: 50px;
-            background: rgba(34, 211, 238, 0.1);
+            background: rgba(244, 114, 182, 0.1);
             border-radius: 8px;
             display: flex;
             justify-content: center;
@@ -277,7 +277,7 @@
             <a href="#" class="btn-primary">Explore Projects</a>
         </div>
         <div class="hero-card-preview">
-            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80](https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80" alt="Automated Pipeline">
             <div class="hero-card-badge"><i class="fa-solid fa-server"></i> Automated Pipeline in Action</div>
         </div>
     </section>
