@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
       - name: portfolio
-        image: 192.168.5.234/my-portfolio/my-portfolio:71
+        image: 192.168.5.234/my-portfolio/my-portfolio:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
        
