@@ -143,6 +143,12 @@
   .cursor{display:inline-block;width:8px;height:16px;background:var(--amber);margin-left:4px;animation:blink 1.1s step-end infinite;vertical-align:middle;}
   @keyframes blink{50%{opacity:0;}}
 
+  /* Section headers */
+  .sec-head{margin-bottom:50px;max-width:640px;}
+  .sec-head .kicker{margin-bottom:12px;}
+  .sec-head h2{font-size:2.2rem;font-weight:700;}
+  .sec-head p{color:var(--muted);margin-top:14px;font-size:1rem;}
+
   /* About Section */
   .about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:60px;}
   .about-grid p{color:var(--muted);margin-bottom:18px;font-size:1rem;}
@@ -240,10 +246,53 @@
   .exp-role .org{color:var(--amber);font-size:0.95rem;margin-bottom:16px;font-family:'JetBrains Mono',monospace;}
   .exp-role ul{color:var(--muted);font-size:0.95rem;padding-left:18px;}
   .exp-role li{margin-bottom:8px;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+  .tag{
+    font-family:'JetBrains Mono',monospace;font-size:0.75rem;
+    padding:5px 12px;border:1px solid var(--line);border-radius:20px;color:var(--muted);
+    background: rgba(255,255,255,0.01);
+  }
+
+  /* Certification */
+  .cert-card{
+    display:flex;align-items:center;gap:24px;
+    background:var(--surface-solid);border:1px solid var(--line);border-radius:12px;
+    padding:30px; transition: border-color 0.3s;
+  }
+  .cert-card:hover{ border-color: var(--teal); }
+  .cert-card .badge{
+    width:58px;height:58px;flex:none;border-radius:12px;
+    background:linear-gradient(135deg,var(--amber),var(--teal));
+    display:flex;align-items:center;justify-content:center;color:#0B0E14;font-size:1.5rem;
+  }
+  .cert-card h4{font-size:1.05rem;margin-bottom:6px;}
+  .cert-card p{color:var(--muted);font-size:0.88rem;}
+
+  /* Projects */
+  .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  .project{
+    background:var(--surface-solid);border:1px dashed var(--line);border-radius:12px;
+    padding:30px; transition: all 0.3s;
+  }
+  .project:hover{ border-style: solid; border-color: var(--amber); transform: translateY(-3px); }
+  .project h4{font-size:1.1rem;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;}
+  .project h4 i{color:var(--muted);font-size:0.9rem;}
+  .project p{color:var(--muted);font-size:0.9rem;}
+
+  /* Contact */
+  .contact-wrap{
+    background:var(--surface-solid);border:1px solid var(--line);border-radius:16px;
+    padding:70px 8vw;text-align:center;
+  }
+  .contact-wrap h2{font-size:2.3rem;margin-bottom:16px;}
+  .contact-wrap p{color:var(--muted);margin-bottom:34px; font-size: 1.05rem;}
+  footer{padding:36px 8vw;color:var(--muted);font-size:0.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line);}
 
   @media(max-width:900px){
     .hero{grid-template-columns:1fr;padding-top:120px;}
     .about-grid{grid-template-columns:1fr;}
+    .exp-item{grid-template-columns:1fr;gap:12px;}
+    .project-grid{grid-template-columns:1fr;}
     nav ul, .socials{display:none;}
     section{padding:70px 6vw;}
   }
@@ -409,9 +458,9 @@
 
 <section id="experience" style="border-top:1px solid var(--line);">
   <div class="max">
-    <div style="margin-bottom:50px;">
+    <div class="sec-head">
       <div class="kicker">EXPERIENCE</div>
-      <h2 style="font-size:2.2rem; font-weight:700;">Where I've worked</h2>
+      <h2>Where I've worked</h2>
     </div>
     <div class="exp-item">
       <div class="exp-when">2026 · 3 MONTHS</div>
@@ -423,10 +472,103 @@
           <li>Deployed workloads to Kubernetes clusters orchestrated via ArgoCD GitOps practices.</li>
           <li>Configured real-time metrics dashboards using Prometheus scrapers and Grafana visualizations.</li>
         </ul>
+        <div class="tag-row">
+          <span class="tag">GitLab CI</span>
+          <span class="tag">Jenkins</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">ArgoCD</span>
+          <span class="tag">Prometheus</span>
+          <span class="tag">Grafana</span>
+          <span class="tag">Terraform</span>
+          <span class="tag">RabbitMQ</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<section id="certifications" style="border-top:1px solid var(--line);">
+  <div class="max">
+    <div class="sec-head">
+      <div class="kicker">CERTIFICATIONS</div>
+      <h2>Validated skills</h2>
+    </div>
+    <div class="cert-card">
+      <div class="badge"><i class="fa-solid fa-certificate"></i></div>
+      <div>
+        <h4>Microsoft Applied Skills: Deploy Containers with Azure Container Apps</h4>
+        <p>Demonstrated capability to deploy, configure, and scale containerized applications on Azure infrastructure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" style="border-top:1px solid var(--line);">
+  <div class="max">
+    <div class="sec-head">
+      <div class="kicker">PROJECTS & PRACTICES</div>
+      <h2>Hands-on builds</h2>
+      <p>Lab setups, pipelines, and application projects I've built during my learning journey.</p>
+    </div>
+    <div class="project-grid">
+      <div class="project">
+        <h4>GitOps Delivery Pipeline <i class="fa-solid fa-arrow-up-right-from-square"></i></h4>
+        <p>Set up a declarative GitOps workflow using ArgoCD to sync Kubernetes deployment manifests with GitLab repositories.</p>
+        <div class="tag-row" style="margin-top:20px;">
+          <span class="tag">Kubernetes</span>
+          <span class="tag">ArgoCD</span>
+          <span class="tag">GitLab</span>
+        </div>
+      </div>
+      <div class="project">
+        <h4>Observability & Monitoring Stack <i class="fa-solid fa-arrow-up-right-from-square"></i></h4>
+        <p>Configured Prometheus scrapers and custom Grafana dashboards for real-time node and application metrics.</p>
+        <div class="tag-row" style="margin-top:20px;">
+          <span class="tag">Prometheus</span>
+          <span class="tag">Grafana</span>
+          <span class="tag">Linux</span>
+        </div>
+      </div>
+      <div class="project">
+        <h4>Azure Containerized Microservice <i class="fa-solid fa-arrow-up-right-from-square"></i></h4>
+        <p>Deployed microservices using Azure Container Apps backed by Terraform infrastructure-as-code automation.</p>
+        <div class="tag-row" style="margin-top:20px;">
+          <span class="tag">Azure</span>
+          <span class="tag">Terraform</span>
+          <span class="tag">Docker</span>
+        </div>
+      </div>
+      <div class="project">
+        <h4>Cross-Platform Mobile App UI <i class="fa-solid fa-arrow-up-right-from-square"></i></h4>
+        <p>Designed and engineered responsive user interfaces for mobile platforms using Flutter and Dart.</p>
+        <div class="tag-row" style="margin-top:20px;">
+          <span class="tag">Flutter</span>
+          <span class="tag">Dart</span>
+          <span class="tag">UI/UX</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-top:1px solid var(--line);">
+  <div class="max">
+    <div class="contact-wrap">
+      <div class="kicker" style="margin-bottom:12px;">GET IN TOUCH</div>
+      <h2>Let's build something scalable.</h2>
+      <p>Currently open to DevOps, Cloud, and Software Engineering entry-level roles or internships.</p>
+      <a href="mailto:manahilmashhud7@gmail.com" class="btn btn-fill"><i class="fa-solid fa-envelope"></i> manahilmashhud7@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 Manahil Mashhud. Built for scale.</div>
+  <div style="display:flex;gap:20px;">
+    <a href="https://github.com/" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/manahil-mashhud-09551b33a/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
 
 </body>
 </html>
