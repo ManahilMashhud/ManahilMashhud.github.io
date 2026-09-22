@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manahil Mashhud — DevOps & Cloud Engineer</title>
+<title>Minahal — DevOps & Cloud Engineer</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -143,38 +143,7 @@
   .cursor{display:inline-block;width:8px;height:16px;background:var(--amber);margin-left:4px;animation:blink 1.1s step-end infinite;vertical-align:middle;}
   @keyframes blink{50%{opacity:0;}}
 
-  /* Section headers */
-  .sec-head{margin-bottom:50px;max-width:640px;}
-  .sec-head .kicker{margin-bottom:12px;}
-  .sec-head h2{font-size:2.2rem;font-weight:700;}
-  .sec-head p{color:var(--muted);margin-top:14px;font-size:1rem;}
-
-  /* Layout ko top-align aur seamless banane ke liye */
-.sec-head-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Equal split taake video badi lage */
-  gap: 40px;
-  align-items: flex-start; /* Upar se perfectly align karne ke liye */
-  margin-bottom: 40px;
-}
-
-.sec-video-box {
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08); /* Soft subtle border */
-  background: var(--surface-solid);
-  width: 100%;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.sec-video-box video {
-  width: 100%;
-  height: 240px; /* Video ko bada karne ke liye height badhayi hai */
-  object-fit: cover;
-  display: block;
-  opacity: 0.9; /* Theme ke saath blend hone ke liye */
-}
-  /* About */
+  /* About Section */
   .about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:60px;}
   .about-grid p{color:var(--muted);margin-bottom:18px;font-size:1rem;}
   .about-grid p strong{color:var(--text);}
@@ -183,10 +152,46 @@
   .stat .num{font-family:'JetBrains Mono',monospace;font-size:1.8rem;font-weight:700;}
   .stat .label{color:var(--muted);font-size:0.85rem;}
 
-  /* Pipeline / skills */
+  /* Combined Unified Card for How I Work Section */
+  .how-it-works-card {
+    background: var(--surface-solid);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .sec-head-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: stretch;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .sec-head-content {
+    padding: 40px;
+  }
+
+  .sec-video-box {
+    width: 100%;
+    height: 100%;
+    border-left: 1px solid var(--line);
+    background: #000;
+    overflow: hidden;
+  }
+
+  .sec-video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Pipeline inside unified container */
   .pipeline{
-    display:grid;grid-template-columns:repeat(5,1fr);gap:0;
-    border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:0;
     background: var(--surface-solid);
   }
   .stage{
@@ -206,6 +211,10 @@
   @media(max-width:1000px){
     .pipeline{grid-template-columns:1fr 1fr;}
     .stage{border-right:1px solid var(--line);border-bottom:1px solid var(--line);}
+  }
+  @media(max-width:850px){
+    .sec-head-grid { grid-template-columns: 1fr; }
+    .sec-video-box { border-left: none; border-top: 1px solid var(--line); height: 220px; }
   }
   @media(max-width:640px){ .pipeline{grid-template-columns:1fr;} }
 
@@ -231,52 +240,6 @@
   .exp-role .org{color:var(--amber);font-size:0.95rem;margin-bottom:16px;font-family:'JetBrains Mono',monospace;}
   .exp-role ul{color:var(--muted);font-size:0.95rem;padding-left:18px;}
   .exp-role li{margin-bottom:8px;}
-  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
-  .tag{
-    font-family:'JetBrains Mono',monospace;font-size:0.75rem;
-    padding:5px 12px;border:1px solid var(--line);border-radius:20px;color:var(--muted);
-    background: rgba(255,255,255,0.01);
-  }
-  @media(max-width:760px){
-    .exp-item{grid-template-columns:1fr;gap:12px;}
-    .sec-head-grid{grid-template-columns:1fr;}
-  }
-
-  /* Certification */
-  .cert-card{
-    display:flex;align-items:center;gap:24px;
-    background:var(--surface-solid);border:1px solid var(--line);border-radius:12px;
-    padding:30px; transition: border-color 0.3s;
-  }
-  .cert-card:hover{ border-color: var(--teal); }
-  .cert-card .badge{
-    width:58px;height:58px;flex:none;border-radius:12px;
-    background:linear-gradient(135deg,var(--amber),var(--teal));
-    display:flex;align-items:center;justify-content:center;color:#0B0E14;font-size:1.5rem;
-  }
-  .cert-card h4{font-size:1.05rem;margin-bottom:6px;}
-  .cert-card p{color:var(--muted);font-size:0.88rem;}
-
-  /* Projects */
-  .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
-  .project{
-    background:var(--surface-solid);border:1px dashed var(--line);border-radius:12px;
-    padding:30px; transition: all 0.3s;
-  }
-  .project:hover{ border-style: solid; border-color: var(--amber); transform: translateY(-3px); }
-  .project h4{font-size:1.1rem;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;}
-  .project h4 i{color:var(--muted);font-size:0.9rem;}
-  .project p{color:var(--muted);font-size:0.9rem;}
-  @media(max-width:760px){.project-grid{grid-template-columns:1fr;}}
-
-  /* Contact */
-  .contact-wrap{
-    background:var(--surface-solid);border:1px solid var(--line);border-radius:16px;
-    padding:70px 8vw;text-align:center;
-  }
-  .contact-wrap h2{font-size:2.3rem;margin-bottom:16px;}
-  .contact-wrap p{color:var(--muted);margin-bottom:34px; font-size: 1.05rem;}
-  footer{padding:36px 8vw;color:var(--muted);font-size:0.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line);}
 
   @media(max-width:900px){
     .hero{grid-template-columns:1fr;padding-top:120px;}
@@ -305,10 +268,8 @@
 </header>
 
 <div class="hero-container">
-  <!-- Video Background Placement -->
   <video class="video-bg" autoplay loop muted playsinline>
     <source src="assets/videos/devops.mp4" type="video/mp4">
-    Your browser does not support the video tag.
   </video>
   <div class="video-overlay"></div>
 
@@ -340,9 +301,9 @@
 
 <section id="about">
   <div class="max about-grid">
-    <div class="sec-head" style="margin-bottom:0;">
+    <div>
       <div class="kicker">ABOUT</div>
-      <h2>Hooked on infrastructure & continuous delivery.</h2>
+      <h2 style="font-size:2.2rem; font-weight:700;">Hooked on infrastructure & continuous delivery.</h2>
     </div>
     <div>
       <p>I'm a <strong>Computer Science undergraduate</strong> who completed a three-month <strong>DevOps internship at Pakistan Single Window</strong>, getting hands-on experience with production-grade delivery tools.</p>
@@ -359,64 +320,72 @@
 <section id="skills" style="border-top:1px solid var(--line);">
   <div class="max">
     
-    <!-- How I Work Header Grid with Linux Video -->
-    <div class="sec-head-grid">
-      <div class="sec-head" style="margin-bottom: 0;">
-        <div class="kicker">HOW I WORK</div>
-        <h2>An app's journey from commit to dashboard</h2>
-        <p>Mapping internship workflows into a structured end-to-end continuous delivery pipeline.</p>
+    <!-- Combined Unified Card -->
+    <div class="how-it-works-card">
+      
+      <!-- Top Grid: Text Left, Video Attached Right -->
+      <div class="sec-head-grid">
+        <div class="sec-head-content">
+          <div class="kicker">HOW I WORK</div>
+          <h2 style="font-size:2rem; font-weight:700;">An app's journey from commit to dashboard</h2>
+          <p style="color:var(--muted); margin-top:12px; font-size:0.95rem;">
+            Mapping internship workflows into a structured end-to-end continuous delivery pipeline.
+          </p>
+        </div>
+        <div class="sec-video-box">
+          <video autoplay loop muted playsinline preload="auto">
+            <source src="assets/videos/linux.mp4" type="video/mp4">
+          </video>
+        </div>
       </div>
-      <div class="sec-video-box">
-        <video autoplay loop muted playsinline>
-          <source src="assets/videos/linux.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+
+      <!-- Bottom Pipeline Steps -->
+      <div class="pipeline">
+        <div class="stage">
+          <div class="idx">01 · SOURCE & CI</div>
+          <h3>Integrate</h3>
+          <ul>
+            <li><i class="fa-solid fa-circle"></i>GitLab CI/CD</li>
+            <li><i class="fa-solid fa-circle"></i>Jenkins pipelines</li>
+          </ul>
+        </div>
+        <div class="stage">
+          <div class="idx">02 · DEPLOY</div>
+          <h3>Orchestrate</h3>
+          <ul>
+            <li><i class="fa-solid fa-circle"></i>Kubernetes</li>
+            <li><i class="fa-solid fa-circle"></i>ArgoCD (GitOps)</li>
+          </ul>
+        </div>
+        <div class="stage">
+          <div class="idx">03 · INFRA</div>
+          <h3>Provision</h3>
+          <ul>
+            <li><i class="fa-solid fa-circle"></i>Terraform basics</li>
+            <li><i class="fa-solid fa-circle"></i>Azure Container Apps</li>
+          </ul>
+        </div>
+        <div class="stage">
+          <div class="idx">04 · MESSAGING</div>
+          <h3>Connect</h3>
+          <ul>
+            <li><i class="fa-solid fa-circle"></i>RabbitMQ</li>
+            <li><i class="fa-solid fa-circle"></i>Networking basics</li>
+          </ul>
+        </div>
+        <div class="stage">
+          <div class="idx">05 · OBSERVE</div>
+          <h3>Monitor</h3>
+          <ul>
+            <li><i class="fa-solid fa-circle"></i>Prometheus</li>
+            <li><i class="fa-solid fa-circle"></i>Grafana</li>
+          </ul>
+        </div>
       </div>
+
     </div>
 
-    <div class="pipeline">
-      <div class="stage">
-        <div class="idx">01 · SOURCE & CI</div>
-        <h3>Integrate</h3>
-        <ul>
-          <li><i class="fa-solid fa-circle"></i>GitLab CI/CD</li>
-          <li><i class="fa-solid fa-circle"></i>Jenkins pipelines</li>
-        </ul>
-      </div>
-      <div class="stage">
-        <div class="idx">02 · DEPLOY</div>
-        <h3>Orchestrate</h3>
-        <ul>
-          <li><i class="fa-solid fa-circle"></i>Kubernetes</li>
-          <li><i class="fa-solid fa-circle"></i>ArgoCD (GitOps)</li>
-        </ul>
-      </div>
-      <div class="stage">
-        <div class="idx">03 · INFRA</div>
-        <h3>Provision</h3>
-        <ul>
-          <li><i class="fa-solid fa-circle"></i>Terraform basics</li>
-          <li><i class="fa-solid fa-circle"></i>Azure Container Apps</li>
-        </ul>
-      </div>
-      <div class="stage">
-        <div class="idx">04 · MESSAGING</div>
-        <h3>Connect</h3>
-        <ul>
-          <li><i class="fa-solid fa-circle"></i>RabbitMQ</li>
-          <li><i class="fa-solid fa-circle"></i>Networking basics</li>
-        </ul>
-      </div>
-      <div class="stage">
-        <div class="idx">05 · OBSERVE</div>
-        <h3>Monitor</h3>
-        <ul>
-          <li><i class="fa-solid fa-circle"></i>Prometheus</li>
-          <li><i class="fa-solid fa-circle"></i>Grafana</li>
-        </ul>
-      </div>
-    </div>
-
+    <!-- Track Grid Below -->
     <div class="track-grid">
       <div class="track">
         <div class="ic"><i class="fa-brands fa-flutter"></i></div>
@@ -434,14 +403,15 @@
         <p>Core knowledge of IP routing, ports, and network communication protocols.</p>
       </div>
     </div>
+
   </div>
 </section>
 
 <section id="experience" style="border-top:1px solid var(--line);">
   <div class="max">
-    <div class="sec-head">
+    <div style="margin-bottom:50px;">
       <div class="kicker">EXPERIENCE</div>
-      <h2>Where I've worked</h2>
+      <h2 style="font-size:2.2rem; font-weight:700;">Where I've worked</h2>
     </div>
     <div class="exp-item">
       <div class="exp-when">2026 · 3 MONTHS</div>
