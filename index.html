@@ -149,28 +149,31 @@
   .sec-head h2{font-size:2.2rem;font-weight:700;}
   .sec-head p{color:var(--muted);margin-top:14px;font-size:1rem;}
 
-  /* Header side-by-side with video layout */
-  .sec-head-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 30px;
-    align-items: center;
-    margin-bottom: 40px;
-  }
-  .sec-video-box {
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    background: var(--surface-solid);
-  }
-  .sec-video-box video {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block;
-  }
+  /* Layout ko top-align aur seamless banane ke liye */
+.sec-head-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Equal split taake video badi lage */
+  gap: 40px;
+  align-items: flex-start; /* Upar se perfectly align karne ke liye */
+  margin-bottom: 40px;
+}
 
+.sec-video-box {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Soft subtle border */
+  background: var(--surface-solid);
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.sec-video-box video {
+  width: 100%;
+  height: 240px; /* Video ko bada karne ke liye height badhayi hai */
+  object-fit: cover;
+  display: block;
+  opacity: 0.9; /* Theme ke saath blend hone ke liye */
+}
   /* About */
   .about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:60px;}
   .about-grid p{color:var(--muted);margin-bottom:18px;font-size:1rem;}
