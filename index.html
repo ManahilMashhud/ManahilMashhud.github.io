@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Manahil Mashhud — DevOps & Cloud Engineer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mnahail Mashhud  — DevOps & Cloud Engineer</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    box-sizing: border-box;
     --bg:#0B0E14;
     --surface:rgba(18, 23, 34, 0.75);
     --surface-solid:#121722;
@@ -19,11 +18,9 @@
     --muted:#8B93A7;
     --amber:#FF8A3D;
     --teal:#4FD1C5;
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px);}
+  html{scroll-behavior: smooth;}
   body{
     background:var(--bg);
     color:var(--text);
@@ -34,19 +31,14 @@
   h1,h2,h3,.mono{ font-family:'JetBrains Mono',monospace; }
   a{color:inherit;}
   section{padding:100px 8vw; position: relative;}
-  .max{max-width:1180px;margin:0 auto; width:100%;}
+  .max{max-width:1180px;margin:0 auto;}
   ::selection{background:var(--amber);color:#0B0E14;}
-
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
-  }
 
   /* Nav */
   header{
     position:fixed;top:0;left:0;width:100%;z-index:100;
     display:flex;justify-content:space-between;align-items:center;
-    padding:calc(18px + env(safe-area-inset-top, 0px)) 8vw 18px;
+    padding:18px 8vw;
     background:rgba(11,14,20,0.75);
     backdrop-filter:blur(12px);
     border-bottom:1px solid rgba(255, 255, 255, 0.05);
@@ -55,34 +47,41 @@
   .logo .dot{width:8px;height:8px;border-radius:50%;background:var(--amber);display:inline-block;box-shadow: 0 0 10px var(--amber);}
   nav ul{list-style:none;display:flex;gap:34px;}
   nav a{text-decoration:none;color:var(--muted);font-size:0.92rem;transition:color .2s, transform .2s; display:inline-block;}
-  nav a:hover, nav a:focus-visible{color:var(--text); transform: translateY(-1px);}
+  nav a:hover{color:var(--text); transform: translateY(-1px);}
   .socials{display:flex;gap:18px;}
   .socials a{color:var(--muted);font-size:1.1rem;transition:all .2s;}
-  .socials a:hover, .socials a:focus-visible{color:var(--amber); transform: scale(1.1);}
-  a:focus-visible, button:focus-visible{outline:2px solid var(--teal); outline-offset:3px; border-radius:4px;}
+  .socials a:hover{color:var(--amber); transform: scale(1.1);}
 
-  /* Hero */
-  .hero-container{
+  /* Hero Section with Video Overlay */
+  .hero-container {
     position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--line);
     overflow: hidden;
-    background:
-      radial-gradient(ellipse 900px 500px at 85% 15%, rgba(79,209,197,0.12), transparent 60%),
-      radial-gradient(ellipse 700px 500px at 15% 85%, rgba(255,138,61,0.10), transparent 60%),
-      var(--bg);
   }
-  .hero-container::before{
-    content:"";
-    position:absolute; inset:0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-    background-size: 48px 48px;
-    mask-image: radial-gradient(ellipse 900px 600px at 70% 40%, black, transparent 75%);
-    pointer-events:none;
+  
+  /* Background Video Setup */
+  .video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 1;
+  }
+
+  .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.4);
+    z-index: 2;
   }
 
   .hero{
@@ -93,7 +92,7 @@
     width: 100%;
     padding-top:140px;padding-bottom:100px;
   }
-
+  
   .kicker{color:var(--amber);font-size:0.85rem;letter-spacing:1px;margin-bottom:18px;font-family:'JetBrains Mono',monospace;}
   .hero h1{font-size:3.1rem;line-height:1.15;font-weight:700;margin-bottom:22px; letter-spacing: -1px;}
   .hero h1 span{
@@ -125,7 +124,9 @@
     box-shadow:0 30px 60px -20px rgba(0,0,0,0.7);
     transition: transform 0.3s ease;
   }
-  .terminal:hover{ transform: translateY(-5px); }
+  .terminal:hover {
+    transform: translateY(-5px);
+  }
   .term-bar{
     display:flex;gap:8px;padding:14px 18px;
     border-bottom:1px solid var(--line);background:rgba(23, 30, 44, 0.8);
@@ -148,7 +149,7 @@
   .sec-head h2{font-size:2.2rem;font-weight:700;}
   .sec-head p{color:var(--muted);margin-top:14px;font-size:1rem;}
 
-  /* About */
+  /* About Section */
   .about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:60px;}
   .about-grid p{color:var(--muted);margin-bottom:18px;font-size:1rem;}
   .about-grid p strong{color:var(--text);}
@@ -157,16 +158,42 @@
   .stat .num{font-family:'JetBrains Mono',monospace;font-size:1.8rem;font-weight:700;}
   .stat .label{color:var(--muted);font-size:0.85rem;}
 
-  /* How I work card */
-  .how-it-works-card{
+  /* Combined Unified Card for How I Work Section */
+  .how-it-works-card {
     background: var(--surface-solid);
     border: 1px solid var(--line);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   }
-  .sec-head-content{ padding: 40px; border-bottom: 1px solid var(--line); }
 
+  .sec-head-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: stretch;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .sec-head-content {
+    padding: 40px;
+  }
+
+  .sec-video-box {
+    width: 100%;
+    height: 100%;
+    border-left: 1px solid var(--line);
+    background: #000;
+    overflow: hidden;
+  }
+
+  .sec-video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Pipeline inside unified container */
   .pipeline{
     display:grid;
     grid-template-columns:repeat(5,1fr);
@@ -179,17 +206,21 @@
     position:relative;
     transition: background 0.3s;
   }
-  .stage:hover{ background: var(--surface-2); }
+  .stage:hover { background: var(--surface-2); }
   .stage:last-child{border-right:none;}
   .stage .idx{font-family:'JetBrains Mono',monospace;color:var(--amber);font-size:0.78rem;margin-bottom:14px;}
   .stage h3{font-size:1rem;margin-bottom:14px;}
   .stage ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
   .stage li{color:var(--muted);font-size:0.85rem;display:flex;align-items:center;gap:8px;}
   .stage li i{color:var(--teal);font-size:0.5rem;}
-
+  
   @media(max-width:1000px){
     .pipeline{grid-template-columns:1fr 1fr;}
     .stage{border-right:1px solid var(--line);border-bottom:1px solid var(--line);}
+  }
+  @media(max-width:850px){
+    .sec-head-grid { grid-template-columns: 1fr; }
+    .sec-video-box { border-left: none; border-top: 1px solid var(--line); height: 220px; }
   }
   @media(max-width:640px){ .pipeline{grid-template-columns:1fr;} }
 
@@ -222,8 +253,10 @@
     background: rgba(255,255,255,0.01);
   }
 
-  /* Certifications */
-  .cert-grid{ display:grid;grid-template-columns:repeat(2,1fr);gap:20px; }
+  /* Certification Grid */
+  .cert-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:20px;
+  }
   .cert-card{
     display:flex;align-items:flex-start;gap:20px;
     background:var(--surface-solid);border:1px solid var(--line);border-radius:12px;
@@ -258,7 +291,7 @@
   }
   .contact-wrap h2{font-size:2.3rem;margin-bottom:16px;}
   .contact-wrap p{color:var(--muted);margin-bottom:34px; font-size: 1.05rem;}
-  footer{padding:36px 8vw calc(36px + env(safe-area-inset-bottom, 0px));color:var(--muted);font-size:0.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line);}
+  footer{padding:36px 8vw;color:var(--muted);font-size:0.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line);}
 
   @media(max-width:900px){
     .hero{grid-template-columns:1fr;padding-top:120px;}
@@ -283,13 +316,18 @@
     <li><a href="#contact">Contact</a></li>
   </ul></nav>
   <div class="socials">
-    <a href="https://github.com/ManahilMashhud" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-    <a href="https://www.linkedin.com/in/manahil-mashhud-09551b33a/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="https://github.com/" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/manahil-mashhud-09551b33a/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
     <a href="mailto:manahilmashhud7@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
   </div>
 </header>
 
 <div class="hero-container">
+  <video class="video-bg" autoplay loop muted playsinline>
+    <source src="assets/videos/devops.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+
   <section class="hero max">
     <div class="hero-content">
       <div class="kicker">DEVOPS ENGINEER</div>
@@ -308,7 +346,7 @@
         <div class="l"><span class="prompt">$</span> cat role.txt</div>
         <div class="l out">DevOps Intern @ <strong>Pakistan Single Window</strong></div>
         <div class="l"><span class="prompt">$</span> kubectl get skills</div>
-        <div class="l out">GitLab · Jenkins · Kubernetes · ArgoCD<br>Vault · Harbor · Prometheus · Grafana</div>
+        <div class="l out">GitLab · Jenkins · Kubernetes · ArgoCD<br>Vault · Harbor · Web Apps · Prometheus</div>
         <div class="l"><span class="prompt">$</span> echo $STATUS</div>
         <div class="l out">open to opportunities<span class="cursor"></span></div>
       </div>
@@ -323,12 +361,12 @@
       <h2 style="font-size:2.2rem; font-weight:700;">Hooked on infrastructure & continuous delivery.</h2>
     </div>
     <div>
-      <p>I'm a <strong>Computer Science undergraduate</strong> who completed a DevOps internship at <strong>Pakistan Single Window</strong> and a Flutter development internship at <strong>Appverse Technologies</strong>.</p>
-      <p>My core exposure covers <strong>GitLab CI & Jenkins</strong>, <strong>Kubernetes & ArgoCD</strong>, <strong>HashiCorp Vault & Harbor Registry</strong>, <strong>web application deployment</strong>, <strong>Prometheus & Grafana</strong>, and <strong>Terraform</strong>.</p>
-      <p>Beyond DevOps, I build cross-platform UI with <strong>Flutter & Dart</strong> and maintain solid fundamentals in <strong>Linux administration & networking</strong>.</p>
+      <p>I'm a <strong>Computer Science undergraduate</strong> who completed a DevOps internship at <strong>Pakistan Single Window</strong> and a Flutter Development internship at <strong>Appverse Technologies</strong>[cite: 6].</p>
+      <p>My core exposure covers <strong>GitLab CI & Jenkins</strong>, <strong>Kubernetes & ArgoCD</strong>, <strong>HashiCorp Vault & Harbor Registry</strong>, <strong>Web Applications troubleshooting</strong>, <strong>Prometheus & Grafana</strong>, and <strong>Terraform</strong>.</p>
+      <p>Beyond DevOps, I engineer cross-platform UI using <strong>Flutter & Dart</strong>[cite: 8] and maintain strong fundamentals in <strong>Linux server administration & networking</strong>[cite: 7, 8].</p>
       <div class="stat-list" style="margin-top:30px;">
-        <div class="stat"><div class="num">2</div><div class="label">Software & DevOps internships</div></div>
-        <div class="stat"><div class="num">4</div><div class="label">Certifications & achievements</div></div>
+        <div class="stat"><div class="num">2</div><div class="label">Software & DevOps Internships</div></div>
+        <div class="stat"><div class="num">4</div><div class="label">Certifications & Achievements</div></div>
       </div>
     </div>
   </div>
@@ -336,16 +374,27 @@
 
 <section id="skills" style="border-top:1px solid var(--line);">
   <div class="max">
-
+    
+    <!-- Combined Unified Card -->
     <div class="how-it-works-card">
-      <div class="sec-head-content">
-        <div class="kicker">HOW I WORK</div>
-        <h2 style="font-size:2rem; font-weight:700;">An app's journey from commit to dashboard</h2>
-        <p style="color:var(--muted); margin-top:12px; font-size:0.95rem;">
-          Mapping internship workflows into a structured end-to-end continuous delivery pipeline.
-        </p>
+      
+      <!-- Top Grid: Text Left, Video Attached Right -->
+      <div class="sec-head-grid">
+        <div class="sec-head-content">
+          <div class="kicker">HOW I WORK</div>
+          <h2 style="font-size:2rem; font-weight:700;">An app's journey from commit to dashboard</h2>
+          <p style="color:var(--muted); margin-top:12px; font-size:0.95rem;">
+            Mapping internship workflows into a structured end-to-end continuous delivery pipeline.
+          </p>
+        </div>
+        <div class="sec-video-box">
+          <video autoplay loop muted playsinline preload="auto">
+            <source src="assets/videos/linux.mp4" type="video/mp4">
+          </video>
+        </div>
       </div>
 
+      <!-- Bottom Pipeline Steps -->
       <div class="pipeline">
         <div class="stage">
           <div class="idx">01 · SOURCE & CI</div>
@@ -365,17 +414,17 @@
         </div>
         <div class="stage">
           <div class="idx">03 · SECURITY & REGISTRY</div>
-          <h3>Secure & store</h3>
+          <h3>Secure & Store</h3>
           <ul>
             <li><i class="fa-solid fa-circle"></i>HashiCorp Vault</li>
-            <li><i class="fa-solid fa-circle"></i>Harbor container registry</li>
+            <li><i class="fa-solid fa-circle"></i>Harbor Container Registry</li>
           </ul>
         </div>
         <div class="stage">
           <div class="idx">04 · INFRA & APPS</div>
           <h3>Provision</h3>
           <ul>
-            <li><i class="fa-solid fa-circle"></i>Web applications</li>
+            <li><i class="fa-solid fa-circle"></i>Web Applications</li>
             <li><i class="fa-solid fa-circle"></i>Terraform & Azure</li>
           </ul>
         </div>
@@ -388,23 +437,25 @@
           </ul>
         </div>
       </div>
+
     </div>
 
+    <!-- Track Grid Below -->
     <div class="track-grid">
       <div class="track">
         <div class="ic"><i class="fa-brands fa-flutter"></i></div>
-        <h4>Mobile & web applications</h4>
-        <p>Cross-platform mobile app development with Flutter & Dart alongside web app deployments.</p>
+        <h4>Mobile & Web Applications</h4>
+        <p>Cross-platform mobile app development with Flutter & Dart alongside Web App deployments[cite: 8].</p>
       </div>
       <div class="track">
         <div class="ic"><i class="fa-solid fa-vault"></i></div>
-        <h4>Secrets & registries</h4>
+        <h4>Secrets & Registries</h4>
         <p>Managing secrets via HashiCorp Vault and container images via Harbor Registry.</p>
       </div>
       <div class="track">
         <div class="ic"><i class="fa-solid fa-network-wired"></i></div>
-        <h4>Linux & networking</h4>
-        <p>Core knowledge of IP routing, ports, system administration, and network communication protocols.</p>
+        <h4>Linux & Networking</h4>
+        <p>Core knowledge of IP routing, ports, system administration, and network communication protocols[cite: 7].</p>
       </div>
     </div>
 
@@ -418,41 +469,45 @@
       <h2>Where I've worked</h2>
     </div>
 
+    <!-- DevOps Internship -->
     <div class="exp-item">
-      <div class="exp-when">2026 · 3 MONTHS</div>
+      <div class="exp-when">JUL 2026 – PRESENT</div>
       <div class="exp-role">
         <h3>DevOps Intern</h3>
         <div class="org">Pakistan Single Window (PSW) · On-site</div>
         <ul>
-          <li>Worked with automated CI/CD pipelines using GitLab CI and Jenkins.</li>
-          <li>Helped deploy and maintain applications on Kubernetes, with ArgoCD for health checks.</li>
-          <li>Installed and connected services with RabbitMQ, and worked with Terraform for infrastructure.</li>
-          <li>Set up Docker, Prometheus, and Grafana for basic metrics and monitoring.</li>
+          <li>Engineered automated CI/CD pipelines utilizing GitLab CI and Jenkins.</li>
+          <li>Deployed and maintained enterprise Web Applications on Kubernetes clusters orchestrated via ArgoCD.</li>
+          <li>Secured application secrets using HashiCorp Vault and managed private Docker images with Harbor Registry.</li>
+          <li>Configured real-time metrics dashboards using Prometheus scrapers and Grafana visualizations.</li>
         </ul>
         <div class="tag-row">
+          <span class="tag">HashiCorp Vault</span>
+          <span class="tag">Harbor</span>
+          <span class="tag">Web Applications</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Kubernetes</span>
           <span class="tag">GitLab CI</span>
           <span class="tag">Jenkins</span>
-          <span class="tag">Kubernetes</span>
           <span class="tag">ArgoCD</span>
-          <span class="tag">Docker</span>
           <span class="tag">Prometheus</span>
           <span class="tag">Grafana</span>
           <span class="tag">Terraform</span>
-          <span class="tag">RabbitMQ</span>
         </div>
       </div>
     </div>
 
+    <!-- Flutter Internship -->
     <div class="exp-item">
-      <div class="exp-when">FLUTTER INTERNSHIP</div>
+      <div class="exp-when">FEB 2026 – MAR 2026</div>
       <div class="exp-role">
         <h3>Flutter Developer Intern</h3>
-        <div class="org">Appverse Technologies · Remote</div>
+        <div class="org">Appverse Technologies · Remote[cite: 6]</div>
         <ul>
-          <li>Developed cross-platform mobile applications using Flutter and Dart.</li>
+          <li>Developed cross-platform mobile applications using Flutter and Dart[cite: 8].</li>
           <li>Built clean, responsive, and adaptive user interfaces.</li>
           <li>Integrated REST APIs for dynamic backend communication and data flow.</li>
-          <li>Implemented Firebase services for database, authentication, and analytics.</li>
+          <li>Implemented Firebase services for database, authentication, and application analytics.</li>
         </ul>
         <div class="tag-row">
           <span class="tag">Flutter</span>
@@ -474,11 +529,11 @@
       <h2>Validated skills & achievements</h2>
     </div>
     <div class="cert-grid">
-
+      
       <div class="cert-card">
         <div class="badge"><i class="fa-solid fa-certificate"></i></div>
         <div>
-          <h4>Deploy Cloud-Native Apps Using Azure Container Apps</h4>
+          <h4>Deploy Containers with Azure Container Apps</h4>
           <div class="issuer">Microsoft Applied Skills</div>
           <p>Demonstrated capability to deploy, configure, and scale containerized applications on Azure infrastructure.</p>
         </div>
@@ -488,8 +543,8 @@
         <div class="badge"><i class="fa-solid fa-award"></i></div>
         <div>
           <h4>Code Jung Networking Participation Certificate</h4>
-          <div class="issuer">Code Jung · KIET</div>
-          <p>Actively participated in the networking segment at KIET, gaining hands-on experience with networking concepts and communication.</p>
+          <div class="issuer">Code Jung · KIET[cite: 7]</div>
+          <p>Actively participated in the networking segment at KIET, gaining hands-on experience in networking concepts and communication[cite: 7].</p>
         </div>
       </div>
 
@@ -497,8 +552,8 @@
         <div class="badge"><i class="fa-brands fa-flutter"></i></div>
         <div>
           <h4>Flutter for Complete Beginners</h4>
-          <div class="issuer">Cursa</div>
-          <p>Completed a foundational course in Flutter development covering widgets, layout, and UI architecture.</p>
+          <div class="issuer">Cursa (Issued Sep 2025)[cite: 8]</div>
+          <p>Completed foundational course in Flutter development covering widgets, layout, and UI architecture[cite: 8].</p>
         </div>
       </div>
 
@@ -506,8 +561,8 @@
         <div class="badge"><i class="fa-solid fa-code"></i></div>
         <div>
           <h4>Dart Tutorial for Beginners</h4>
-          <div class="issuer">Cursa</div>
-          <p>Covered core Dart programming language concepts, object-oriented principles, and async programming.</p>
+          <div class="issuer">Cursa (Issued Oct 2025)[cite: 8]</div>
+          <p>Mastered core Dart programming language concepts, object-oriented principles, and async programming[cite: 8].</p>
         </div>
       </div>
 
@@ -518,14 +573,14 @@
 <section id="projects" style="border-top:1px solid var(--line);">
   <div class="max">
     <div class="sec-head">
-      <div class="kicker">PROJECTS & PRACTICE</div>
+      <div class="kicker">PROJECTS & PRACTICES</div>
       <h2>Hands-on builds</h2>
       <p>Lab setups, pipelines, and application projects I've built during my learning journey.</p>
     </div>
     <div class="project-grid">
       <div class="project">
-        <h4>GitOps delivery pipeline</h4>
-        <p>Set up a declarative GitOps workflow using ArgoCD to sync Kubernetes deployment manifests with a GitLab repository.</p>
+        <h4>GitOps Delivery Pipeline <i class="fa-solid fa-arrow-up-right-from-square"></i></h4>
+        <p>Set up a declarative GitOps workflow using ArgoCD to sync Kubernetes deployment manifests with GitLab repositories.</p>
         <div class="tag-row" style="margin-top:20px;">
           <span class="tag">Kubernetes</span>
           <span class="tag">ArgoCD</span>
@@ -533,25 +588,26 @@
         </div>
       </div>
       <div class="project">
-        <h4>Monitoring setup</h4>
-        <p>Installed and ran Docker, Prometheus, and Grafana to explore basic metrics collection and dashboards.</p>
+        <h4>Observability & Security Integration <i class="fa-solid fa-arrow-up-right-from-square"></i></h4>
+        <p>Configured Prometheus scrapers and Grafana dashboards, with secure secrets injection using HashiCorp Vault.</p>
         <div class="tag-row" style="margin-top:20px;">
-          <span class="tag">Docker</span>
+          <span class="tag">Vault</span>
           <span class="tag">Prometheus</span>
           <span class="tag">Grafana</span>
         </div>
       </div>
       <div class="project">
-        <h4>Azure containerized microservice</h4>
-        <p>Deployed a containerized app using Azure Container Apps, backed by the skills validated in the Microsoft Applied Skills certification.</p>
+        <h4>Azure Containerized Microservice <i class="fa-solid fa-arrow-up-right-from-square"></i></h4>
+        <p>Deployed microservices using Azure Container Apps backed by Terraform infrastructure-as-code automation.</p>
         <div class="tag-row" style="margin-top:20px;">
           <span class="tag">Azure</span>
-          <span class="tag">Containers</span>
+          <span class="tag">Terraform</span>
+          <span class="tag">Docker</span>
         </div>
       </div>
       <div class="project">
-        <h4>Cross-platform mobile app UI</h4>
-        <p>Designed and built responsive user interfaces for mobile platforms using Flutter and Dart.</p>
+        <h4>Cross-Platform Mobile App UI <i class="fa-solid fa-arrow-up-right-from-square"></i></h4>
+        <p>Designed and engineered responsive user interfaces for mobile platforms using Flutter and Dart[cite: 8].</p>
         <div class="tag-row" style="margin-top:20px;">
           <span class="tag">Flutter</span>
           <span class="tag">Dart</span>
@@ -576,8 +632,8 @@
 <footer>
   <div>© 2026 Manahil Mashhud. Built for scale.</div>
   <div style="display:flex;gap:20px;">
-    <a href="https://github.com/ManahilMashhud" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://www.linkedin.com/in/manahil-mashhud-09551b33a/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/manahil-mashhud-09551b33a/" target="_blank">LinkedIn</a>
   </div>
 </footer>
 
