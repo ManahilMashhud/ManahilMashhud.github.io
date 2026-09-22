@@ -153,10 +153,22 @@
   .about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:60px;}
   .about-grid p{color:var(--muted);margin-bottom:18px;font-size:1rem;}
   .about-grid p strong{color:var(--text);}
-  .stat-list{display:flex;flex-direction:column;gap:22px;}
-  .stat{border-left:2px solid var(--amber);padding-left:18px;}
-  .stat .num{font-family:'JetBrains Mono',monospace;font-size:1.8rem;font-weight:700;}
-  .stat .label{color:var(--muted);font-size:0.85rem;}
+  .stat-list{display:flex;flex-direction:column;gap:16px;}
+  .stat{
+    display:flex;align-items:center;gap:18px;
+    border:1px solid var(--line);border-left:3px solid var(--amber);
+    background:var(--surface-solid);border-radius:10px;
+    padding:18px 22px;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  }
+  .stat:hover{ transform: translateX(4px); border-color: var(--teal); box-shadow: 0 10px 25px -10px rgba(79,209,197,0.25); }
+  .stat .num{
+    font-family:'JetBrains Mono',monospace;font-size:2.1rem;font-weight:700;
+    min-width:54px;
+    background: linear-gradient(135deg, var(--amber), var(--teal));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .stat .label{color:var(--muted);font-size:0.88rem;}
 
   /* Combined Unified Card for How I Work Section */
   .how-it-works-card {
@@ -165,6 +177,12 @@
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    position: relative;
+  }
+  .how-it-works-card::before{
+    content:"";
+    position:absolute; top:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--amber), var(--teal), #6366f1);
   }
 
   .sec-head-grid {
@@ -230,8 +248,8 @@
     background:var(--surface-solid);border:1px solid var(--line);border-radius:12px;
     padding:28px; transition: transform 0.3s, border-color 0.3s;
   }
-  .track:hover{ transform: translateY(-4px); border-color: var(--amber); }
-  .track .ic{width:46px;height:46px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--teal);margin-bottom:18px;font-size:1.2rem;}
+  .track:hover{ transform: translateY(-4px); border-color: var(--amber); box-shadow: 0 16px 30px -12px rgba(255,138,61,0.25); }
+  .track .ic{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg, rgba(255,138,61,0.18), rgba(79,209,197,0.18));border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--teal);margin-bottom:18px;font-size:1.2rem;}
   .track h4{font-size:1.05rem;margin-bottom:8px;}
   .track p{color:var(--muted);font-size:0.88rem;}
 
@@ -443,7 +461,7 @@
     <!-- Track Grid Below -->
     <div class="track-grid">
       <div class="track">
-        <div class="ic"><i class="fa-brands fa-flutter"></i></div>
+        <div class="ic"><i class="fa-solid fa-mobile-screen-button"></i></div>
         <h4>Mobile & Web Applications</h4>
         <p>Cross-platform mobile app development with Flutter & Dart alongside Web App deployments[cite: 8].</p>
       </div>
@@ -639,3 +657,4 @@
 
 </body>
 </html>
+
