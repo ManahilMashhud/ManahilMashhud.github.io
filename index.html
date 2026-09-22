@@ -253,20 +253,25 @@
     background: rgba(255,255,255,0.01);
   }
 
-  /* Certification */
+  /* Certification Grid */
+  .cert-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:20px;
+  }
   .cert-card{
-    display:flex;align-items:center;gap:24px;
+    display:flex;align-items:flex-start;gap:20px;
     background:var(--surface-solid);border:1px solid var(--line);border-radius:12px;
-    padding:30px; transition: border-color 0.3s;
+    padding:24px; transition: border-color 0.3s;
   }
   .cert-card:hover{ border-color: var(--teal); }
   .cert-card .badge{
-    width:58px;height:58px;flex:none;border-radius:12px;
+    width:50px;height:50px;flex:none;border-radius:12px;
     background:linear-gradient(135deg,var(--amber),var(--teal));
-    display:flex;align-items:center;justify-content:center;color:#0B0E14;font-size:1.5rem;
+    display:flex;align-items:center;justify-content:center;color:#0B0E14;font-size:1.3rem;
   }
-  .cert-card h4{font-size:1.05rem;margin-bottom:6px;}
-  .cert-card p{color:var(--muted);font-size:0.88rem;}
+  .cert-card h4{font-size:1.02rem;margin-bottom:4px;}
+  .cert-card .issuer{color:var(--amber);font-size:0.82rem;font-family:'JetBrains Mono',monospace;margin-bottom:8px;}
+  .cert-card p{color:var(--muted);font-size:0.85rem;}
+  @media(max-width:850px){ .cert-grid{grid-template-columns:1fr;} }
 
   /* Projects */
   .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
@@ -306,6 +311,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul></nav>
@@ -340,7 +346,7 @@
         <div class="l"><span class="prompt">$</span> cat role.txt</div>
         <div class="l out">DevOps Intern @ <strong>Pakistan Single Window</strong></div>
         <div class="l"><span class="prompt">$</span> kubectl get skills</div>
-        <div class="l out">GitLab · Jenkins · Kubernetes · ArgoCD<br>Prometheus · Grafana · Terraform · RabbitMQ</div>
+        <div class="l out">GitLab · Jenkins · Kubernetes · ArgoCD<br>Vault · Harbor · Web Apps · Prometheus</div>
         <div class="l"><span class="prompt">$</span> echo $STATUS</div>
         <div class="l out">open to opportunities<span class="cursor"></span></div>
       </div>
@@ -355,12 +361,12 @@
       <h2 style="font-size:2.2rem; font-weight:700;">Hooked on infrastructure & continuous delivery.</h2>
     </div>
     <div>
-      <p>I'm a <strong>Computer Science undergraduate</strong> who completed a DevOps internship at <strong>Pakistan Single Window</strong> and a Flutter Development internship at <strong>Appverse Technologies</strong>[cite: 10].</p>
-      <p>My core exposure covers <strong>GitLab CI & Jenkins</strong>, <strong>Kubernetes & ArgoCD</strong> for GitOps deployments, <strong>Prometheus & Grafana</strong> for observability, <strong>Terraform</strong> for infrastructure automation, and <strong>RabbitMQ</strong> for async messaging.</p>
-      <p>Beyond DevOps, I engineer cross-platform UI using <strong>Flutter</strong> and maintain strong fundamentals in <strong>Linux server administration & networking</strong>.</p>
+      <p>I'm a <strong>Computer Science undergraduate</strong> who completed a DevOps internship at <strong>Pakistan Single Window</strong> and a Flutter Development internship at <strong>Appverse Technologies</strong>[cite: 6].</p>
+      <p>My core exposure covers <strong>GitLab CI & Jenkins</strong>, <strong>Kubernetes & ArgoCD</strong>, <strong>HashiCorp Vault & Harbor Registry</strong>, <strong>Web Applications troubleshooting</strong>, <strong>Prometheus & Grafana</strong>, and <strong>Terraform</strong>.</p>
+      <p>Beyond DevOps, I engineer cross-platform UI using <strong>Flutter & Dart</strong>[cite: 8] and maintain strong fundamentals in <strong>Linux server administration & networking</strong>[cite: 7, 8].</p>
       <div class="stat-list" style="margin-top:30px;">
         <div class="stat"><div class="num">2</div><div class="label">Software & DevOps Internships</div></div>
-        <div class="stat"><div class="num">1</div><div class="label">Microsoft Applied Skills Certification</div></div>
+        <div class="stat"><div class="num">4</div><div class="label">Certifications & Achievements</div></div>
       </div>
     </div>
   </div>
@@ -407,19 +413,19 @@
           </ul>
         </div>
         <div class="stage">
-          <div class="idx">03 · INFRA</div>
-          <h3>Provision</h3>
+          <div class="idx">03 · SECURITY & REGISTRY</div>
+          <h3>Secure & Store</h3>
           <ul>
-            <li><i class="fa-solid fa-circle"></i>Terraform basics</li>
-            <li><i class="fa-solid fa-circle"></i>Azure Container Apps</li>
+            <li><i class="fa-solid fa-circle"></i>HashiCorp Vault</li>
+            <li><i class="fa-solid fa-circle"></i>Harbor Container Registry</li>
           </ul>
         </div>
         <div class="stage">
-          <div class="idx">04 · MESSAGING</div>
-          <h3>Connect</h3>
+          <div class="idx">04 · INFRA & APPS</div>
+          <h3>Provision</h3>
           <ul>
-            <li><i class="fa-solid fa-circle"></i>RabbitMQ</li>
-            <li><i class="fa-solid fa-circle"></i>Networking basics</li>
+            <li><i class="fa-solid fa-circle"></i>Web Applications</li>
+            <li><i class="fa-solid fa-circle"></i>Terraform & Azure</li>
           </ul>
         </div>
         <div class="stage">
@@ -438,18 +444,18 @@
     <div class="track-grid">
       <div class="track">
         <div class="ic"><i class="fa-brands fa-flutter"></i></div>
-        <h4>Mobile Development</h4>
-        <p>Cross-platform mobile app development with Flutter framework.</p>
+        <h4>Mobile & Web Applications</h4>
+        <p>Cross-platform mobile app development with Flutter & Dart alongside Web App deployments[cite: 8].</p>
       </div>
       <div class="track">
-        <div class="ic"><i class="fa-brands fa-linux"></i></div>
-        <h4>Linux Systems</h4>
-        <p>System management and shell environment configuration.</p>
+        <div class="ic"><i class="fa-solid fa-vault"></i></div>
+        <h4>Secrets & Registries</h4>
+        <p>Managing secrets via HashiCorp Vault and container images via Harbor Registry.</p>
       </div>
       <div class="track">
         <div class="ic"><i class="fa-solid fa-network-wired"></i></div>
-        <h4>Networking</h4>
-        <p>Core knowledge of IP routing, ports, and network communication protocols.</p>
+        <h4>Linux & Networking</h4>
+        <p>Core knowledge of IP routing, ports, system administration, and network communication protocols[cite: 7].</p>
       </div>
     </div>
 
@@ -471,19 +477,22 @@
         <div class="org">Pakistan Single Window (PSW) · On-site</div>
         <ul>
           <li>Engineered automated CI/CD pipelines utilizing GitLab CI and Jenkins.</li>
-          <li>Deployed workloads to Kubernetes clusters orchestrated via ArgoCD GitOps practices.</li>
+          <li>Deployed and maintained enterprise Web Applications on Kubernetes clusters orchestrated via ArgoCD.</li>
+          <li>Secured application secrets using HashiCorp Vault and managed private Docker images with Harbor Registry.</li>
           <li>Configured real-time metrics dashboards using Prometheus scrapers and Grafana visualizations.</li>
         </ul>
         <div class="tag-row">
+          <span class="tag">HashiCorp Vault</span>
+          <span class="tag">Harbor</span>
+          <span class="tag">Web Applications</span>
           <span class="tag">Docker</span>
-          <span class="tag">Terraform</span>
+          <span class="tag">Kubernetes</span>
           <span class="tag">GitLab CI</span>
           <span class="tag">Jenkins</span>
-          <span class="tag">Kubernetes</span>
           <span class="tag">ArgoCD</span>
           <span class="tag">Prometheus</span>
           <span class="tag">Grafana</span>
-          <span class="tag">RabbitMQ</span>
+          <span class="tag">Terraform</span>
         </div>
       </div>
     </div>
@@ -493,12 +502,12 @@
       <div class="exp-when">FEB 2026 – MAR 2026</div>
       <div class="exp-role">
         <h3>Flutter Developer Intern</h3>
-        <div class="org">Appverse Technologies · Remote</div>
+        <div class="org">Appverse Technologies · Remote[cite: 6]</div>
         <ul>
-          <li>Developed cross-platform mobile applications using Flutter and Dart[cite: 10].</li>
-          <li>Built clean, responsive, and adaptive user interfaces[cite: 10].</li>
-          <li>Integrated REST APIs for dynamic backend communication and data flow[cite: 10].</li>
-          <li>Implemented Firebase services for database, authentication, and application analytics[cite: 10].</li>
+          <li>Developed cross-platform mobile applications using Flutter and Dart[cite: 8].</li>
+          <li>Built clean, responsive, and adaptive user interfaces.</li>
+          <li>Integrated REST APIs for dynamic backend communication and data flow.</li>
+          <li>Implemented Firebase services for database, authentication, and application analytics.</li>
         </ul>
         <div class="tag-row">
           <span class="tag">Flutter</span>
@@ -516,15 +525,47 @@
 <section id="certifications" style="border-top:1px solid var(--line);">
   <div class="max">
     <div class="sec-head">
-      <div class="kicker">CERTIFICATIONS</div>
-      <h2>Validated skills</h2>
+      <div class="kicker">CERTIFICATIONS & ACHIEVEMENTS</div>
+      <h2>Validated skills & achievements</h2>
     </div>
-    <div class="cert-card">
-      <div class="badge"><i class="fa-solid fa-certificate"></i></div>
-      <div>
-        <h4>Microsoft Applied Skills: Deploy Containers with Azure Container Apps</h4>
-        <p>Demonstrated capability to deploy, configure, and scale containerized applications on Azure infrastructure.</p>
+    <div class="cert-grid">
+      
+      <div class="cert-card">
+        <div class="badge"><i class="fa-solid fa-certificate"></i></div>
+        <div>
+          <h4>Deploy Containers with Azure Container Apps</h4>
+          <div class="issuer">Microsoft Applied Skills</div>
+          <p>Demonstrated capability to deploy, configure, and scale containerized applications on Azure infrastructure.</p>
+        </div>
       </div>
+
+      <div class="cert-card">
+        <div class="badge"><i class="fa-solid fa-award"></i></div>
+        <div>
+          <h4>Code Jung Networking Participation Certificate</h4>
+          <div class="issuer">Code Jung · KIET[cite: 7]</div>
+          <p>Actively participated in the networking segment at KIET, gaining hands-on experience in networking concepts and communication[cite: 7].</p>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="badge"><i class="fa-brands fa-flutter"></i></div>
+        <div>
+          <h4>Flutter for Complete Beginners</h4>
+          <div class="issuer">Cursa (Issued Sep 2025)[cite: 8]</div>
+          <p>Completed foundational course in Flutter development covering widgets, layout, and UI architecture[cite: 8].</p>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="badge"><i class="fa-solid fa-code"></i></div>
+        <div>
+          <h4>Dart Tutorial for Beginners</h4>
+          <div class="issuer">Cursa (Issued Oct 2025)[cite: 8]</div>
+          <p>Mastered core Dart programming language concepts, object-oriented principles, and async programming[cite: 8].</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -547,12 +588,12 @@
         </div>
       </div>
       <div class="project">
-        <h4>Observability & Monitoring Stack <i class="fa-solid fa-arrow-up-right-from-square"></i></h4>
-        <p>Configured Prometheus scrapers and custom Grafana dashboards for real-time node and application metrics.</p>
+        <h4>Observability & Security Integration <i class="fa-solid fa-arrow-up-right-from-square"></i></h4>
+        <p>Configured Prometheus scrapers and Grafana dashboards, with secure secrets injection using HashiCorp Vault.</p>
         <div class="tag-row" style="margin-top:20px;">
+          <span class="tag">Vault</span>
           <span class="tag">Prometheus</span>
           <span class="tag">Grafana</span>
-          <span class="tag">Linux</span>
         </div>
       </div>
       <div class="project">
@@ -566,7 +607,7 @@
       </div>
       <div class="project">
         <h4>Cross-Platform Mobile App UI <i class="fa-solid fa-arrow-up-right-from-square"></i></h4>
-        <p>Designed and engineered responsive user interfaces for mobile platforms using Flutter and Dart[cite: 10].</p>
+        <p>Designed and engineered responsive user interfaces for mobile platforms using Flutter and Dart[cite: 8].</p>
         <div class="tag-row" style="margin-top:20px;">
           <span class="tag">Flutter</span>
           <span class="tag">Dart</span>
